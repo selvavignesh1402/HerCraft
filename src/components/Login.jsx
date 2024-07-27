@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import loginimg from './img1.png'
 import Navbar from './Navbar';
 import './Navbar.css'
@@ -8,16 +10,24 @@ import './Navbar.css'
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Email:', email);
     console.log('Password:', password);
+    login();
+    navigate('*');
   };
 
   return (
     <div>
-      <div className="login-container">
+ <Navbar/>
+ <br/>
+ <br/>
+    <div>
+    <div className="login-container">
       <div className="login-form">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -51,6 +61,7 @@ function Login() {
       </div>
     </div>
 </div>
+         </div>
   );
 }
 

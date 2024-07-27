@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import './Register.css';
 import signupimg from './img6.png'; 
 import google from './google.png'
+import NavBar from './Navbar';
 
 function Register() {
   const [name, setName] = useState('');
@@ -10,13 +13,15 @@ function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [agree, setAgree] = useState(false);
+  const navigate = useNavigate();
+  const { register } = useAuth();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!agree) {
-      alert('You must agree to the terms and conditions');
-      return;
-    }
+    // if (!agree) {
+    //   alert('You must agree to the terms and conditions');
+    //   return;
+    // }
     if (password !== confirmPassword) {
       alert('Passwords do not match');
       return;
@@ -24,9 +29,16 @@ function Register() {
     console.log('Name:', name);
     console.log('Email:', email);
     console.log('Password:', password);
+    register(name, email, password);
+    navigate('*');
   };
 
   return (
+    <div>
+      <NavBar/>
+      <br/>
+      <br/>
+      <br/>
     <div className="register-container">
       <div className="register-form">
         <h2>Sign Up</h2>
@@ -50,7 +62,7 @@ function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-            />
+              />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
@@ -60,7 +72,7 @@ function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-            />
+              />
           </div>
           <div className="form-group">
             <label htmlFor="confirmPassword">Confirm Password</label>
@@ -74,18 +86,18 @@ function Register() {
           </div>
           {/* <div className="form-group1">
             <input
-              type="checkbox"
+            type="checkbox"
               id="agree"
               checked={agree}
               onChange={(e) => setAgree(e.target.checked)}
               required
-            />
-            <label htmlFor="agree">I've read and agree with terms of service</label>
-          </div> */}
+              />
+              <label htmlFor="agree">I've read and agree with terms of service</label>
+              </div> */}
         <br/>
           <button type="submit" className="submit-button">Sign Up</button>
         </form>
-        <br/>
+        {/* <br/> */}
           <div className='or'>or</div>
         <button className="social-button google">
             <img src={google} alt="Google logo" className="google-icon" />
@@ -94,10 +106,11 @@ function Register() {
         </div>
         <p className='already'>Already have an account? <Link to="/login">Sign in</Link></p>
       </div>
-      <div className="illustration">
+      <div className="illustration1">
         <img src={signupimg} alt="Register Illustration" />
       </div>
     </div>
+              </div>
   );
 }
 

@@ -1,12 +1,14 @@
 import './App.css';
 import Home from './components/Home';
 import Navigator from './Router/Navigator';
+import { AuthProvider } from './components/AuthContext';
 
 function App() {
   return (
     <div className="App">
-      <Navigator />
-      {/* <Home/> */}
+      <AuthProvider>
+          <Navigator />
+      </AuthProvider>
     </div>
   );
 }

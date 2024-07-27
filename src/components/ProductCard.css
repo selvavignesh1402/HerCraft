@@ -1,0 +1,33 @@
+.card {
+    width: 250px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .product-image {
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .product-name {
+    font-size: 1em;
+  }
+  
+  .product-price {
+    font-size: 1em;
+    color: #282d37;
+  }
+
+  .grid {
+    padding-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  

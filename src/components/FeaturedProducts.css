@@ -1,0 +1,82 @@
+/* FeaturedProducts.css */
+.featured-products-container {
+    padding: 30px;
+    background-color: #ffffff;
+    background: transparent;
+    text-align: center;
+    padding-top: 80px;
+    gap: 30px;
+}
+
+.featured-products-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.featured-products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background-color: white;
+    background: transparent;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin: 10px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effect */
+}
+
+.product-card:hover {
+    transform: translateY(-10px); /* Slightly lift the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance the shadow */
+}
+
+.product-image {
+    width: 100%; /* Ensures images fit the card width */
+    height: 150px; /* Set a specific height */
+    object-fit: cover; /* Ensures image aspect ratio is maintained */
+    border-radius: 8px;
+}
+
+.sale-badge {
+    background-color: rgb(116, 116, 116);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.product-type {
+    color: grey;
+    margin: 5px 0;
+}
+
+.product-name {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-price.sale {
+    color: red;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: grey;
+    margin-right: 10px;
+}
+
