@@ -1,14 +1,19 @@
 .card {
-    width: 250px;
-    padding: 20px;
-    margin: 20px;
-    border: 1px;
-    border-radius: 10px;
-    text-align: center;
-  }
+  width: 250px;
+  padding: 20px;
+  margin: 20px;
+  border: 1px  rgb(202, 197, 197);
+  border-radius: 10px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
   
   .product-image {
-    width: 90%;
+    width: 95%;
     height: auto;
     border-radius: 10px;
   }
@@ -30,4 +35,107 @@
     gap: 20px;
   }
   
+  .extra-content {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 40px;
+    background-color: #f9f7f7;
+    background: transparent;
+    /* border-top: 1px solid #dbe2ef; */
+    justify-content: center;
+  }
   
+  .extra-image {
+    width: 30%;
+    height: 10%;
+    border-radius: 5px;
+  }
+
+  .video-container {
+    position: relative;
+    flex: 1;
+    max-width: 35%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .extra-video {
+    width: 100%;
+    height: auto;
+  }
+  
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Adjust the transparency level here */
+    border-radius: 8px;
+    z-index: 1;
+  }
+
+  .extra-content-text {
+    max-width: 50%;
+    padding: 16px;
+  }
+  
+  .extra-content-text h2 {
+    color: #3f72af;
+    font-size: 1.8em;
+    margin-bottom: 16px;
+  }
+  
+  .extra-content-text p {
+    color: #112d4e;
+    font-size: 1.0em;
+  }
+
+  .cart {
+    background-color: #ffffff;
+    border: 1px solid #dbe2ef;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px auto;
+    width: 80%;
+    text-align: center;
+  }
+
+  .add-to-cart {
+    background-color: #3f72af;
+    color: #f9f7f7;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  
+  .add-to-cart:hover {
+    background-color: #112d4e;
+  }
+
+  .quick-view {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(15%, -620%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 8px;
+    border-radius: 10%; 
+    color: rgb(0, 0, 0);
+  }
+  
+  .image-container:hover .quick-view {
+    opacity: 2;
+  }
+
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
