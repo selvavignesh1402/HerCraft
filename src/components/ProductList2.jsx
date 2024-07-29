@@ -17,14 +17,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import Footer from './Footer';
 
 const products = [
-  { id: 9, image: p12, name: 'Tribal Dreamcatcher Necklace', price: 85.00 },
-  { id: 10, image: p13, name: 'Vintage Rectangle Necklace', price: 50.00 },
-  { id: 11, image: p14, name: 'Bold Red Statement Necklace', price: 70.00 },
-  { id: 12, image: p15, name: 'Rustic Coin Pendant Necklace', price: 63.00 },
-  { id: 13, image: p16, name: 'Rustic Coin Pendant Necklace', price: 63.00 },
-  { id: 14, image: p17, name: 'Rustic Coin Pendant Necklace', price: 63.00 },
-  { id: 15, image: p18, name: 'Rustic Coin Pendant Necklace', price: 63.00 },
-  { id: 16, image: p19, name: 'Rustic Coin Pendant Necklace', price: 63.00 },
+{ id: 9, image: p12, name: 'Handcrafted Pottery Vase', price: 85.00 },
+{ id: 10, image: p13, name: 'Rustic Clay Pitcher', price: 50.00 },
+{ id: 11, image: p14, name: 'Ceramic Tea Set', price: 70.00 },
+{ id: 12, image: p15, name: 'Decorative Wall Plate', price: 63.00 },
+{ id: 13, image: p16, name: 'Hand-painted Flower Pot', price: 63.00 },
+{ id: 14, image: p17, name: 'Antique Style Bowl', price: 63.00 },
+{ id: 15, image: p18, name: 'Glazed Ceramic Mug', price: 63.00 },
+{ id: 16, image: p19, name: 'Artisan Pottery Jar', price: 63.00 },
 ];
 
 const ProductList2 = () => {

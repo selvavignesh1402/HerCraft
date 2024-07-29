@@ -33,11 +33,29 @@
 
 .navbar ul li {
   margin: 0 15px;
+  position: relative; /* Needed for the underline effect */
 }
 
 .navbar ul li a {
   color: rgb(0, 0, 0);
   text-decoration: none;
+  padding-bottom: 5px; /* Space for the underline */
+}
+
+.navbar ul li a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px; /* Height of the underline */
+  background-color: #000; /* Color of the underline */
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.navbar ul li a:hover::after {
+  width: 100%;
 }
 
 .content {
@@ -74,4 +92,13 @@
   text-decoration: none; 
 }
 
-
+.cart-count {
+  position: absolute;
+  top: 20px;
+  right: -0px;
+  background-color: #819bb5;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}

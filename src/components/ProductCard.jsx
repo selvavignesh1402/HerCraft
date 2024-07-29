@@ -18,10 +18,12 @@ import React, { useState } from 'react';
 import { IconButton } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import QuickViewModal from './QuickViewModal';
+import { Rating } from '@mui/material';
 import './ProductCard.css';
 
 const ProductCard = ({ product, handleAddToCart }) => {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(0);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -37,6 +39,13 @@ const ProductCard = ({ product, handleAddToCart }) => {
       <h2 className="product-name">{product.name}</h2>
       <p className="product-price">₹{product.price}</p>
       <QuickViewModal open={open} onClose={handleClose} product={product} />
+      {/* <Rating
+        name={`rating-${product.id}`}
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      /> */}
       <button className="add-to-cart" onClick={() => handleAddToCart(product)}>Add to Bag</button>
     </div>
   );
