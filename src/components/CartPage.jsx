@@ -3,6 +3,7 @@ import { useCart } from './CartContext';
 import './CartPage.css';
 import Navbar from './Navbar';
 import { Alert, Snackbar } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
@@ -54,7 +55,7 @@ const CartPage = () => {
                   <span>₹{totalPrice.toFixed(2)}</span>
                 </div>
               </div>
-              <button className="checkout-button">CHECKOUT</button>
+              <Link to={"/checkout"}><button className="checkout-button">CHECKOUT</button></Link>
             </div>
           </>
         )}

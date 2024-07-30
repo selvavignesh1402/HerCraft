@@ -8,12 +8,15 @@ import ProductList2 from '../components/ProductList2';
 import ProductList3 from '../components/ProductList3';
 import Profile from '../components/Profile';
 import CartPage from '../components/CartPage';
-import { CartProvider } from '../components/CartContext'; // Ensure correct path
+import { CartProvider } from '../components/CartContext';
+import Checkout from '../components/Checkout';
+import ScrollToTop from '../components/ScrollToTop';
 
 export default function Navigator() {
   return (
     <CartProvider>
       <Router>
+      <ScrollToTop />
         <Routes>
           <Route path="*" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -22,6 +25,7 @@ export default function Navigator() {
           <Route path="/category/Decor" element={<ProductList2 />} />
           <Route path="/category/Fabric" element={<ProductList3 />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>

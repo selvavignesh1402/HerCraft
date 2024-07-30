@@ -147,8 +147,8 @@ function Register() {
         body: JSON.stringify({ name, email, password }),
       });
       if (response.ok) {
-        const data = await response.json();
-        console.log('Registered user:', data);
+        // const data = await response.json();
+        console.log('User Registered');
         navigate('*');
       } else {
         alert('Registration failed');

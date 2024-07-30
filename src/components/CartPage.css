@@ -1,7 +1,7 @@
 /* Cart.css */
 .cart-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding: 20px;
     /* background-color: #F9F7F7; */

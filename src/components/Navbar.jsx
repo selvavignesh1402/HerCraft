@@ -22,7 +22,7 @@ const NavBar = ({ onSearch }) => {
   return (
     <div className="container">
       <nav className="navbar">
-        <Link to="/">
+        <Link to="*">
           <img src={logo} alt="Logo" className="logo" />
           Her-Craft
         </Link>
@@ -44,7 +44,7 @@ const NavBar = ({ onSearch }) => {
           )}
         </ul>
         <input
-          type="text"
+          type="text1"
           placeholder="Search..."
           value={searchTerm}
           onChange={handleSearchChange}

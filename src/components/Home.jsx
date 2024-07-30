@@ -67,6 +67,8 @@ const CategoryCard = ({ name, products, imgSrc }) => (
     </Link>
 );
 
+
+
 const Home = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
