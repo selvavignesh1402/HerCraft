@@ -30,7 +30,7 @@ const NavBar = ({ onSearch }) => {
           <li><Link to="/">Home</Link></li>
           <li><a href="#shop">Shop</a></li>
           <li><a href="#blog">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><Link to="/contact">Contact</Link></li>
           {isAuthenticated ? (
             <>
               <li>

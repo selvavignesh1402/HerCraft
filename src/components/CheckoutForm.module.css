@@ -41,26 +41,35 @@
 
 .customerInformation,
 .billingDetails,
+.paymentDetails,
 .additionalInformation,
 .orderSummary {
   margin-bottom: 20px;
-  border:solid 1px #d7d7d7;
+  border: solid 1px #d7d7d7;
   padding: 25px;
+}
+
+.paymentDetails{
+  margin-bottom: 20px;
+  border: solid 1px #d7d7d7;
+  padding: 25px;
+  margin-top: 25px;
 }
 
 .head {
   font-weight: bold;
   margin-bottom: 15px;
   text-align: left;
-  border-bottom:solid 1px #b0b0b0;
+  border-bottom: solid 1px #b0b0b0;
 }
 
-input[type="text"]{
+input[type="text"] {
   width: 95%;
   padding: 12px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 2px;
+  background-color:#ffffff;
 }
 
 select {
@@ -73,7 +82,7 @@ select {
 
 .row {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .row input[type="text"],
@@ -88,11 +97,31 @@ select {
   width: 100%;
 }
 
+.row input[type="month"]:last-child,
+.row select:last-child {
+  width: 85%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.row input[type="number"]:last-child,
+.row select:last-child {
+  width: 75%;
+  padding: 12px;
+  margin-left: 22px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .orderSummary {
-  width:400px;
-  border:solid 1px #d7d7d7;
+  width: 400px;
+  border: solid 1px #d7d7d7;
   padding: 25px;
-  height: 556px;
+  height: 800px;
 }
 
 .product {
@@ -123,3 +152,61 @@ select {
   padding-top: 20px;
   border-top: solid 1px rgb(168, 168, 168);
 }
+
+.paymentDetails .row {
+  margin-bottom: 10px;
+
+}
+
+.paymentDetails label {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.paymentDetails input[type="radio"] {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+/* Existing styles... */
+
+.paymentField {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.paymentField input[type="text"] {
+  width: calc(100% - 60px); /* Adjust width to accommodate image */
+  padding-right: 60px; /* Space for the image */
+}
+
+.paymentIcon {
+  position: absolute;
+  right: 10px; /* Adjust as needed */
+  top: 40%;
+  transform: translateY(-50%);
+  width: 20px; /* Adjust size as needed */
+  height: auto;
+}
+
+/* Existing styles... */
+
+.placeOrderButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #3F72AF;
+  color: #FFFFFF;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.placeOrderButton:hover {
+  background-color: #112D4E;
+}
+
