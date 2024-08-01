@@ -1,3 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 270px;
+  height: 192%;
+  background-color: #f8f8f8;
+  padding: 20px;
+  box-shadow: 2px 0 1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background-color: transparent;
+}
+
+.sidebar input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.sidebar h2 {
+  margin: 20px 0 10px;
+  font-size: 18px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  text-decoration: underline;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 270px;
+  transition: margin-left 0.3s ease;
+}
+
 .card {
   width: 250px;
   padding: 20px;

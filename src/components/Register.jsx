@@ -149,7 +149,7 @@ function Register() {
       if (response.ok) {
         // const data = await response.json();
         console.log('User Registered');
-        navigate('*');
+        navigate('/login');
       } else {
         alert('Registration failed');
       }

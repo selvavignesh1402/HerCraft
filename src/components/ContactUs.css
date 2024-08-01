@@ -1,115 +1,138 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .contact-container { 
-    transform: translatey(-95px);
-    margin-bottom: 50px;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.contact-container {
+  transform: translatey(-95px);
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.coninfo {
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px;
+  width: 40%;
+  padding-top: 150px;
 }
 
 .contact-header {
-    background: url('./images/hbg2.jpg') no-repeat center center fixed;
-    background-size: cover;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 200vh;
-    margin-top: 90px;
-  }
-  
-  .contact-header h1 {
-    font-size: 4em;
-    margin: 0;
-    color: #ffffff;
-  }
-  
-  .contact-header p {
-    font-size: 1.2em;
-    margin: 20px 0 0 0;
-    color: #ffffff;
-  }
-  
-  
-  .contact-left {
-    background-color: #f1f1f1;
-    color: rgb(0, 0, 0);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    width: 40%;
-    height: 80%;
-    margin-left: 750px;
-    border-bottom: 2px 100% solid black;
-    
-  }
-  
-  .contact-form {
-    width: 80%;
-    max-width: 500px;
-  }
-  
-  .contact-form h2 {
-    margin: 0 0 20px;
-    font-size: 1.5em;
-  }
-  
-  .contact-form form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .contact-form .form-row {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .contact-form input,
-  .contact-form textarea {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: transparent;
-    background: transparent;
-    border-bottom: 1px solid;
-    flex: 1;
-  }
-  
-  .contact-form input[type="text"],
-  .contact-form input[type="email"] {
-    width: calc(50% - 10px);
-  }
-  
-  .contact-form textarea {
-    height: 100px;
-  }
-  
-  .contact-form button {
-    align-self: flex-start;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .contact-form button:hover {
-    background-color: #555;
-  }
-  
-  .contact-email {
-    margin-top: 20px;
-    font-size: 0.9em;
-    color: #333;
-  }
-  
-  .social-links {
-    margin-top: auto;
-    font-size: 0.9em;
-    color: #999;
-  }
-  
+  background: url('./images/hbg2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 205vh;
+  margin-top: 90px;
+}
+
+.contact-header h1 {
+  font-size: 4em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.contact-header p {
+  font-size: 1.2em;
+  margin: 20px 0 0 0;
+  color: #ffffff;
+}
+
+.contact-left {
+  background-color: #f1f1f1;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  width: 40%;
+  height: 80%;
+  border-bottom: 2px 100% solid black;
+}
+
+.contact-form {
+  width: 80%;
+  max-width: 500px;
+  height: 100%;
+}
+
+.contact-form h2 {
+  margin: 0 0 20px;
+  font-size: 1.5em;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form .form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: transparent;
+  background: transparent;
+  border-bottom: 1px solid;
+  flex: 1;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"] {
+  width: calc(50% - 10px);
+}
+
+.contact-form textarea {
+  height: 100px;
+}
+
+.contact-form button {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #555;
+}
+
+.contact-email {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.social-links {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #333;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.social-links a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  margin-bottom: 10px;
+}

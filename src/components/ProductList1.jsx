@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+import Footer from './Footer';
+import { useCart } from './CartContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import p1 from './images/p1.webp';
 import p2 from './images/p2.webp';
 import p3 from './images/p3.webp';
@@ -10,10 +15,6 @@ import p7 from './images/p7.webp';
 import p8 from './images/p8.jpg';
 import p9 from './images/p9.avif';
 import pd3 from './images/pd3.jpg';
-import { useCart } from './CartContext';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Footer from './Footer';
 
 const products = [
   { id: 1, image: p2, name: 'Tribal Dreamcatcher Necklace', price: 85.00 },
@@ -28,10 +29,25 @@ const products = [
 
 const ProductList1 = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [priceRange, setPriceRange] = useState([50, 100]);
   const { addToCart } = useCart();
 
   const handleSearch = (term) => {
     setSearchTerm(term);
+    filterProducts(term, priceRange);
+  };
+
+  const handleFilter = (range) => {
+    setPriceRange(range);
+    filterProducts(searchTerm, range);
+  };
+
+  const filterProducts = (term, range) => {
+    const filtered = products.filter((product) => {
+      return product.name.toLowerCase().includes(term.toLowerCase()) && product.price >= range[0] && product.price <= range[1];
+    });
+    setFilteredProducts(filtered);
   };
 
   const handleAddToCart = (product) => {
@@ -39,25 +55,27 @@ const ProductList1 = () => {
     toast.success('Item added to Bag successfully!');
   };
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   return (
     <div>
       <Navbar onSearch={handleSearch} />
+      <Sidebar onSearch={handleSearch} onFilter={handleFilter} />
       <div className="grid">
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} handleAddToCart={handleAddToCart} />
-        ))}
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} handleAddToCart={handleAddToCart} />
+          ))
+        ) : (
+          <p>No products found</p>
+        )}
       </div>
-      <ToastContainer />
+      <ToastContainer toastClassName="toast-success" />
       <br />
       <br />
       <br />
       <br />
       <div className="extra-content">
-        <img src={pd3} alt="Patwa Threadwork of Rajasthan" className="extra-image"/>
+        <img src={pd3} alt="Patwa Threadwork of Rajasthan" className="extra-image" />
         <div className="extra-content-text">
           <h2>Handmade Jewelry Collection</h2>
           <p>
@@ -67,7 +85,7 @@ const ProductList1 = () => {
       </div>
       <br />
       <br />
-      <Footer/>
+      <Footer />
     </div>
   );
 };

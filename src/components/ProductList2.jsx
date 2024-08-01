@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import './ProductCard.css';
 import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 import p12 from './images/p12.webp';
 import p13 from './images/p13.webp';
 import p14 from './images/p14.webp';
@@ -29,10 +30,25 @@ const products = [
 
 const ProductList2 = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [priceRange, setPriceRange] = useState([50, 100]);
   const { addToCart } = useCart();
 
   const handleSearch = (term) => {
     setSearchTerm(term);
+    filterProducts(term, priceRange);
+  };
+
+  const handleFilter = (range) => {
+    setPriceRange(range);
+    filterProducts(searchTerm, range);
+  };
+
+  const filterProducts = (term, range) => {
+    const filtered = products.filter((product) => {
+      return product.name.toLowerCase().includes(term.toLowerCase()) && product.price >= range[0] && product.price <= range[1];
+    });
+    setFilteredProducts(filtered);
   };
 
   const handleAddToCart = (product) => {
@@ -40,18 +56,20 @@ const ProductList2 = () => {
     toast.success('Item added to Bag successfully!');
   };
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
 
   return (
     <div>
       <Navbar onSearch={handleSearch} />
+      <Sidebar onSearch={handleSearch} onFilter={handleFilter} />
       <div className="grid">
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} handleAddToCart={handleAddToCart}/>
-        ))}
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} handleAddToCart={handleAddToCart} />
+          ))
+        ) : (
+          <p>No products found</p>
+        )}
       </div>
       <ToastContainer />
       <br />
