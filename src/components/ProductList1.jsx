@@ -59,6 +59,10 @@ const ProductList1 = () => {
   return (
     <div>
       <Navbar onSearch={handleSearch} />
+      <div className="contact1-header">
+        <h1>Hand-Made Jwellery</h1>
+        <p> Discover our beautiful handmade jewelry collection. Each piece is crafted with love and precision, showcasing unique designs and high-quality materials.</p>
+        </div>
       <Sidebar onSearch={handleSearch} onFilter={handleFilter} />
       <div className="grid">
         {filteredProducts.length > 0 ? (
@@ -74,7 +78,7 @@ const ProductList1 = () => {
       <br />
       <br />
       <br />
-      <div className="extra-content">
+      {/* <div className="extra-content">
         <img src={pd3} alt="Patwa Threadwork of Rajasthan" className="extra-image" />
         <div className="extra-content-text">
           <h2>Handmade Jewelry Collection</h2>
@@ -82,7 +86,7 @@ const ProductList1 = () => {
             Discover our beautiful handmade jewelry collection. Each piece is crafted with love and precision, showcasing unique designs and high-quality materials. From elegant necklaces to charming bracelets, find the perfect accessory to enhance your style.
           </p>
         </div>
-      </div>
+      </div> */}
       <br />
       <br />
       <Footer />

@@ -2,9 +2,33 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.contact1-header {
+  background: url('./images/pp3.jpg')  center center fixed;
+  background-size: cover;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 205vh;
+  margin-top: 90px;
+}
+
+.contact1-header h1 {
+  font-size: 4em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.contact1-header p {
+  font-size: 1.2em;
+  margin: 20px 0 0 0;
+  color: #ffffff;
+}
+
 .sidebar {
   position: absolute;
-  top: 90px;
+  top: 600px;
   left: 0;
   width: 270px;
   height: 192%;

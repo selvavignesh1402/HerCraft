@@ -43,13 +43,13 @@ const NavBar = ({ onSearch }) => {
             </li>
           )}
         </ul>
-        {/* <input
+        <input
           type="text1"
           placeholder="Search..."
           value={searchTerm}
           onChange={handleSearchChange}
           className="search-input"
-        /> */}
+        />
         <Link to="/cart" className="cart-link">
           <img src={bag} alt="Bag" className="bag-icon" />
           {cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}

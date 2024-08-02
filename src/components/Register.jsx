@@ -116,13 +116,14 @@
 
 // export default Register;
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Register.css';
 import { useAuth } from './AuthContext';
 import signupimg from './img6.png'; 
 import google from './google.png';
 import NavBar from './Navbar';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 function Register() {
   const [name, setName] = useState('');
@@ -147,7 +148,6 @@ function Register() {
         body: JSON.stringify({ name, email, password }),
       });
       if (response.ok) {
-        // const data = await response.json();
         console.log('User Registered');
         navigate('/login');
       } else {
@@ -158,76 +158,102 @@ function Register() {
       alert('An error occurred');
     }
     register(name, email, password);
+  };
 
+  const handleGoogleLoginSuccess = async (credentialResponse) => {
+    try {
+      const response = await fetch('http://localhost:8080/api/userregister/google', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idToken: credentialResponse.credential }),
+      });
+      if (response.ok) {
+        console.log('Google Sign-In successful');
+        navigate('/dashboard');
+      } else {
+        alert('Google Sign-In failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred during Google Sign-In');
+    }
+  };
+
+  const handleGoogleLoginError = () => {
+    alert('Google Sign-In was unsuccessful. Try again later');
   };
 
   return (
-    <div>
-      <NavBar />
-      <br />
-      <br />
-      <br />
-      <div className="register-container">
-        <div className="register-form">
-          <h2>Sign Up</h2>
-          <div className="social-buttons">
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <br />
-              <button type="submit" className="submit-button">Sign Up</button>
-            </form>
-            <div className='or'>or</div>
-            <button className="social-button google">
-              <img src={google} alt="Google logo" className="google-icon" />
-              Continue with Google
-            </button>
+    <GoogleOAuthProvider clientId="212963097333-pd12olg4b48egl0gdbdlhb3qa4jc194n.apps.googleusercontent.com">
+      <div>
+        <NavBar />
+        <br />
+        <br />
+        <br />
+        <div className="register-container">
+          <div className="register-form">
+            <h2>Sign Up</h2>
+            <div className="social-buttons">
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="confirmPassword">Confirm Password</label>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <br />
+                <button type="submit" className="submit-button">Sign Up</button>
+              </form>
+              <div className='or'>or</div>
+              <GoogleLogin
+                onSuccess={handleGoogleLoginSuccess}
+                onError={handleGoogleLoginError}
+              />
+            </div>
+            <p className='already'>Already have an account? <Link to="/login">Sign in</Link></p>
           </div>
-          <p className='already'>Already have an account? <Link to="/login">Sign in</Link></p>
-        </div>
-        <div className="illustration1">
-          <img src={signupimg} alt="Register Illustration" />
+          <div className="illustration1">
+            <img src={signupimg} alt="Register Illustration" />
+          </div>
         </div>
       </div>
-    </div>
+    </GoogleOAuthProvider>
   );
 }
 

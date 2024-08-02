@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
-import './ProductCard.css';
+import './ProductCard2.css';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import p12 from './images/p12.webp';
@@ -61,6 +61,10 @@ const ProductList2 = () => {
   return (
     <div>
       <Navbar onSearch={handleSearch} />
+      <div className="contact2-header">
+        <h1>Pottery</h1>
+        <p>Each piece is skillfully handcrafted, reflecting timeless techniques and creativity.</p>
+        </div>
       <Sidebar onSearch={handleSearch} onFilter={handleFilter} />
       <div className="grid">
         {filteredProducts.length > 0 ? (
@@ -76,7 +80,7 @@ const ProductList2 = () => {
       <br />
       <br />
       <br />
-      <div className="extra-content">
+      {/* <div className="extra-content">
         <img src={pd5} alt="Patwa Threadwork of Rajasthan" className="extra-image" />
         <div className="extra-content-text">
           <h2>Pottery Making</h2>
@@ -84,7 +88,7 @@ const ProductList2 = () => {
             Explore the art of pottery making with our exquisite collection. Each piece is skillfully handcrafted, reflecting timeless techniques and creativity. From stunning vases to elegant bowls, discover unique pottery that adds a touch of elegance to any space.
           </p>
         </div>
-      </div>
+      </div> */}
       <br />
       <br />
       <Footer/>

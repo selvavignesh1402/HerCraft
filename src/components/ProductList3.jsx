@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
-import './ProductCard.css';
+import './ProductCard3.css';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import p20 from './images/p20.jpg';
@@ -20,7 +20,6 @@ const products = [
   { id: 17, image: p24, name: 'Vintage Rectangle Necklace', price: 50.00 },
   { id: 18, image: p25, name: 'Vintage Rectangle Necklace', price: 50.00 },
   { id: 19, image: p26, name: 'Vintage Rectangle Necklace', price: 50.00 },
-  { id: 20, image: p27, name: 'Vintage Rectangle Necklace', price: 50.00 },
   { id: 21, image: p20, name: 'Tribal Dreamcatcher Necklace', price: 85.00 },
   { id: 22, image: p21, name: 'Vintage Rectangle Necklace', price: 50.00 },
   { id: 23, image: p22, name: 'Vintage Rectangle Necklace', price: 50.00 },
@@ -57,6 +56,10 @@ const ProductList3 = () => {
   return (
     <div>
       <Navbar onSearch={handleSearch} />
+      <div className="contact3-header">
+        <h1>Hand-Made Textiles</h1>
+        <p>   Immerse yourself in the world of handmade textiles. Each piece is a testament to the skill and creativity of our artisans, crafted with care and precision.</p>
+        </div>
       <Sidebar onSearch={handleSearch} onFilter={handleFilter} />
       <div className="grid">
         {filteredProducts.length > 0 ? (
@@ -72,7 +75,7 @@ const ProductList3 = () => {
       <br />
       <br />
       <br />
-      <div className="extra-content">
+      {/* <div className="extra-content">
         <div className="video-container">
           <video className="extra-video" autoPlay muted loop>
             <source src="/videos/pd6.mp4" type="video/mp4" />
@@ -86,7 +89,7 @@ const ProductList3 = () => {
             Immerse yourself in the world of handmade textiles. Each piece is a testament to the skill and creativity of our artisans, crafted with care and precision. From intricate weaves to vibrant prints, discover the beauty and uniqueness of our textile collection.
           </p>
         </div>
-      </div>
+      </div> */}
       <br />
       <br />
       <Footer/>

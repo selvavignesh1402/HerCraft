@@ -28,7 +28,7 @@
 }
   
 .background-image {
-    
+    background-image: fixed;
     position: absolute;
     width: 100%;
     height: 100%;
