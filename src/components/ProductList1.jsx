@@ -16,16 +16,18 @@ import p8 from './images/p8.jpg';
 import p9 from './images/p9.avif';
 import pd3 from './images/pd3.jpg';
 
-const products = [
-  { id: 1, image: p2, name: 'Tribal Dreamcatcher Necklace', price: 85.00 },
-  { id: 2, image: p1, name: 'Vintage Rectangle Necklace', price: 50.00 },
-  { id: 3, image: p3, name: 'Bold Red Statement Necklace', price: 70.00 },
-  { id: 4, image: p5, name: 'Rustic Coin Pendant Necklace', price: 63.00 },
-  { id: 5, image: p6, name: 'Scarlet Beaded Necklace', price: 63.00 },
-  { id: 6, image: p7, name: 'Vibrant Turtle Bead Necklace', price: 63.00 },
-  { id: 7, image: p8, name: 'Colorful Pendant Necklace', price: 63.00 },
-  { id: 8, image: p9, name: 'Bohemian Elephant Necklace', price: 63.00 },
-];
+ const products = [
+    { id: 1, image: p2, name: 'Tribal Dreamcatcher Necklace', price: 85.00, rating: 4 },
+    { id: 2, image: p1, name: 'Vintage Rectangle Necklace', price: 50.00, rating: 5 },
+    { id: 3, image: p3, name: 'Bold Red Statement Necklace', price: 70.00, rating: 3 },
+    { id: 4, image: p5, name: 'Rustic Coin Pendant Necklace', price: 63.00, rating: 4 },
+    { id: 5, image: p6, name: 'Scarlet Beaded Necklace', price: 63.00, rating: 2 },
+    { id: 6, image: p7, name: 'Vibrant Turtle Bead Necklace', price: 63.00, rating: 5 },
+    { id: 7, image: p8, name: 'Colorful Pendant Necklace', price: 63.00, rating: 4 },
+    { id: 8, image: p9, name: 'Bohemian Elephant Necklace', price: 63.00, rating: 3 },
+  ];
+  
+
 
 const ProductList1 = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -68,6 +70,7 @@ const ProductList1 = () => {
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} handleAddToCart={handleAddToCart} />
+            
           ))
         ) : (
           <p>No products found</p>

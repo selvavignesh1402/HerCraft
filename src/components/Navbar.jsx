@@ -29,7 +29,7 @@ const NavBar = ({ onSearch }) => {
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><a href="#shop">Shop</a></li>
-          <li><a href="#blog">Blog</a></li>
+          <li><Link to="/connect">Connect</Link></li>
           <li><Link to="/contact">Contact</Link></li>
           {isAuthenticated ? (
             <>

@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react';
-import { GoogleLogin } from 'react-google-login';
-import { useNavigate } from 'react-router-dom';
 import { gapi } from 'gapi-script';
 
-const clientId = 'YOUR_GOOGLE_CLIENT_ID'; // Replace with your actual client ID
+const clientId = '212963097333-pd12olg4b48egl0gdbdlhb3qa4jc194n.apps.googleusercontent.com'; // Replace with your actual client ID
 
-const Register = () => {
-  const navigate = useNavigate();
+const Google = () => {
 
-  // Load the Google API library
   useEffect(() => {
+    // Load the Google API script
     const initClient = () => {
-      gapi.load('client:auth2', () => {
-        gapi.client.init({
-          clientId: clientId,
+      gapi.load('auth2', () => {
+        gapi.auth2.init({
+          client_id: clientId,
           scope: 'email',
         });
       });
@@ -21,29 +18,30 @@ const Register = () => {
     initClient();
   }, []);
 
-  const responseGoogle = (response) => {
-    console.log(response);
-    // Handle successful response and registration logic here
-    navigate('/home'); // Redirect or handle login
-  };
-
-  const handleError = (error) => {
-    console.error('Google login error:', error);
-    alert('Login failed. Please try again.');
+  const handleLogin = () => {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signIn().then(
+      (googleUser) => {
+        console.log('Google User:', googleUser);
+        // Handle the Google User object and authenticate with your server if needed
+        // You can replace this line with any logic you need after successful login
+        alert('Login successful!');
+      },
+      (error) => {
+        console.error('Error during Google login:', error);
+        alert('Login failed. Please try again.');
+      }
+    );
   };
 
   return (
     <div className="register-container">
       <h2>Sign Up</h2>
-      <GoogleLogin
-        clientId={clientId}
-        buttonText="Continue with Google"
-        onSuccess={responseGoogle}
-        onError={handleError}
-        cookiePolicy={'single_host_origin'}
-      />
+      <button onClick={handleLogin} className="social-button google">
+        Continue with Google
+      </button>
     </div>
   );
 };
 
-export default Register;
+export default Google;

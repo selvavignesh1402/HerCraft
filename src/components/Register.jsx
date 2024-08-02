@@ -121,9 +121,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Register.css';
 import { useAuth } from './AuthContext';
 import signupimg from './img6.png'; 
-import google from './google.png';
 import NavBar from './Navbar';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { gapi } from 'gapi-script';
+
+const clientId = '212963097333-pd12olg4b48egl0gdbdlhb3qa4jc194n.apps.googleusercontent.com'; // Replace with your actual client ID
 
 function Register() {
   const [name, setName] = useState('');
@@ -132,6 +133,29 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
   const { register } = useAuth();
+
+  useEffect(() => {
+    const initClient = () => {
+      gapi.load('auth2', () => {
+        gapi.auth2.init({
+          client_id: clientId,
+          scope: 'email',
+        });
+      });
+    };
+
+    if (window.gapi) {
+      initClient();
+    } else {
+      window.addEventListener('load', initClient);
+    }
+
+    return () => {
+      if (window.removeEventListener) {
+        window.removeEventListener('load', initClient);
+      }
+    };
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -160,100 +184,102 @@ function Register() {
     register(name, email, password);
   };
 
-  const handleGoogleLoginSuccess = async (credentialResponse) => {
-    try {
-      const response = await fetch('http://localhost:8080/api/userregister/google', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ idToken: credentialResponse.credential }),
+  const handleGoogleLogin = async () => {
+    const auth2 = gapi.auth2.getAuthInstance();
+    if (auth2) {
+      auth2.signIn().then(async (googleUser) => {
+        const idToken = googleUser.getAuthResponse().id_token;
+        try {
+          const response = await fetch('http://localhost:8080/api/userregister/google', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ idToken }),
+          });
+          if (response.ok) {
+            console.log('User logged in with Google');
+            navigate('/home');
+          } else {
+            alert('Google login failed');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred');
+        }
       });
-      if (response.ok) {
-        console.log('Google Sign-In successful');
-        navigate('/dashboard');
-      } else {
-        alert('Google Sign-In failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred during Google Sign-In');
+    } else {
+      console.error('Google Auth instance not initialized');
+      alert('Google Auth instance not initialized. Please try again.');
     }
   };
 
-  const handleGoogleLoginError = () => {
-    alert('Google Sign-In was unsuccessful. Try again later');
-  };
-
   return (
-    <GoogleOAuthProvider clientId="212963097333-pd12olg4b48egl0gdbdlhb3qa4jc194n.apps.googleusercontent.com">
-      <div>
-        <NavBar />
-        <br />
-        <br />
-        <br />
-        <div className="register-container">
-          <div className="register-form">
-            <h2>Sign Up</h2>
-            <div className="social-buttons">
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="confirmPassword">Confirm Password</label>
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
-                  />
-                </div>
-                <br />
-                <button type="submit" className="submit-button">Sign Up</button>
-              </form>
-              <div className='or'>or</div>
-              <GoogleLogin
-                onSuccess={handleGoogleLoginSuccess}
-                onError={handleGoogleLoginError}
-              />
-            </div>
-            <p className='already'>Already have an account? <Link to="/login">Sign in</Link></p>
+    <div>
+      <NavBar />
+      <br />
+      <br />
+      <br />
+      <div className="register-container">
+        <div className="register-form">
+          <h2>Sign Up</h2>
+          <div className="social-buttons">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <br />
+              <button type="submit" className="submit-button">Sign Up</button>
+            </form>
+            <div className='or'>or</div>
+            <button onClick={handleGoogleLogin} className="social-button google">
+              Continue with Google
+            </button>
           </div>
-          <div className="illustration1">
-            <img src={signupimg} alt="Register Illustration" />
-          </div>
+          <p className='already'>Already have an account? <Link to="/login">Sign in</Link></p>
+        </div>
+        <div className="illustration1">
+          <img src={signupimg} alt="Register Illustration" />
         </div>
       </div>
-    </GoogleOAuthProvider>
+    </div>
   );
 }
 

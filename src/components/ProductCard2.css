@@ -216,3 +216,17 @@ body {
       align-items: center;
       height: 100%;
     }
+
+    .star-rating {
+      display: flex;
+      margin-left: 75px;
+    }
+    
+    .star {
+      color: #ddd;
+      font-size: 1.5rem;
+    }
+    
+    .star.filled {
+      color: #f5c518;
+    }

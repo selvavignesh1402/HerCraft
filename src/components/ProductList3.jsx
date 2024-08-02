@@ -17,13 +17,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Footer from './Footer';
 
 const products = [
-  { id: 17, image: p24, name: 'Vintage Rectangle Necklace', price: 50.00 },
-  { id: 18, image: p25, name: 'Vintage Rectangle Necklace', price: 50.00 },
-  { id: 19, image: p26, name: 'Vintage Rectangle Necklace', price: 50.00 },
-  { id: 21, image: p20, name: 'Tribal Dreamcatcher Necklace', price: 85.00 },
-  { id: 22, image: p21, name: 'Vintage Rectangle Necklace', price: 50.00 },
-  { id: 23, image: p22, name: 'Vintage Rectangle Necklace', price: 50.00 },
-  { id: 24, image: p23, name: 'Vintage Rectangle Necklace', price: 50.00 },
+  { id: 17, image: p24, name: 'Vintage Rectangle Necklace', price: 50.00,rating: 4 },
+  { id: 18, image: p25, name: 'Vintage Rectangle Necklace', price: 50.00,rating: 5 },
+  { id: 19, image: p26, name: 'Vintage Rectangle Necklace', price: 50.00,rating: 3 },
+  { id: 21, image: p20, name: 'Tribal Dreamcatcher Necklace', price: 85.00,rating: 4 },
+  { id: 22, image: p21, name: 'Vintage Rectangle Necklace', price: 50.00 ,rating: 4},
+  { id: 23, image: p22, name: 'Vintage Rectangle Necklace', price: 50.00,rating: 4.5 },
+  { id: 24, image: p23, name: 'Vintage Rectangle Necklace', price: 50.00,rating: 4 },
 ];
 
 const ProductList3 = () => {

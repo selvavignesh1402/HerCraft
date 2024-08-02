@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Box, Typography, Button } from '@mui/material';
 import './QuickViewModal.css';
 
-const QuickViewModal = ({ open, onClose, product, addToCart }) => {
+const QuickViewModal = ({ open, onClose, product, addToCart,rating }) => {
   const handleAddToCart = () => {
     addToCart(product);
     onClose();
@@ -16,6 +16,7 @@ const QuickViewModal = ({ open, onClose, product, addToCart }) => {
         <Typography variant="body1">₹{product.price}</Typography>
         <Typography variant="body2">{product.description}</Typography>
         {/* <Button variant="contained" color="primary" onClick={handleAddToCart}>Add to Cart</Button> */}
+        <Typography variant="body3">{product.rating}</Typography> 
       </Box>
     </Modal>
   );
