@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from './CartContext';
+import { useAuth } from './AuthContext';
 import styles from './CheckoutForm.module.css';
 import NavBar from './Navbar';
 import master from './images/master.png';
@@ -8,6 +9,7 @@ import axios from 'axios';
 
 const CheckoutForm = () => {
   const { cart } = useCart();
+  const { user } = useAuth(); // Use useAuth to access authenticated user
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   const countries = ["India", "United States (US)", "Canada", "United Kingdom (UK)", "Australia"];
@@ -40,6 +42,15 @@ const CheckoutForm = () => {
     phone: '',
     notes: ''
   });
+
+  useEffect(() => {
+    if (user) {
+      setCustomerDetails(prevDetails => ({
+        ...prevDetails,
+        username: user.name 
+      }));
+    }
+  }, [user]);
 
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
@@ -109,6 +120,7 @@ const CheckoutForm = () => {
                 name="username"
                 value={customerDetails.username}
                 onChange={handleCustomerChange}
+                required
               />
             </div>
             <div className={styles.billingDetails}>
@@ -120,6 +132,7 @@ const CheckoutForm = () => {
                   name="firstName"
                   value={customerDetails.firstName}
                   onChange={handleCustomerChange}
+                  required
                 />
                 <input 
                   type="text" 
@@ -127,6 +140,7 @@ const CheckoutForm = () => {
                   name="lastName"
                   value={customerDetails.lastName}
                   onChange={handleCustomerChange}
+                  required
                 />
               </div>
               <input 
@@ -136,7 +150,7 @@ const CheckoutForm = () => {
                 value={customerDetails.companyName}
                 onChange={handleCustomerChange}
               />
-              <select value={selectedCountry} onChange={handleCountryChange}>
+              <select value={selectedCountry} onChange={handleCountryChange} required>
                 {countries.map((country, index) => (
                   <option key={index} value={country}>{country}</option>
                 ))}
@@ -148,6 +162,7 @@ const CheckoutForm = () => {
                   name="address"
                   value={customerDetails.address}
                   onChange={handleCustomerChange}
+                  required
                 />
                 <input 
                   type="text" 
@@ -164,8 +179,9 @@ const CheckoutForm = () => {
                   name="city"
                   value={customerDetails.city}
                   onChange={handleCustomerChange}
+                  required
                 />
-                <select value={selectedState} onChange={handleStateChange}>
+                <select value={selectedState} onChange={handleStateChange} required>
                   {states[selectedCountry].map((state, index) => (
                     <option key={index} value={state}>{state}</option>
                   ))}
@@ -176,6 +192,7 @@ const CheckoutForm = () => {
                   name="zipCode"
                   value={customerDetails.zipCode}
                   onChange={handleCustomerChange}
+                  required
                 />
               </div>
               <input 
@@ -184,6 +201,7 @@ const CheckoutForm = () => {
                 name="phone"
                 value={customerDetails.phone}
                 onChange={handleCustomerChange}
+                required
               />
             </div>
             <div className={styles.additionalInformation}>
@@ -223,6 +241,7 @@ const CheckoutForm = () => {
                     value="card" 
                     checked={paymentMethod === 'card'} 
                     onChange={handlePaymentMethodChange} 
+                    required
                   />
                   Credit Card
                 </label>
@@ -232,6 +251,7 @@ const CheckoutForm = () => {
                     value="upi" 
                     checked={paymentMethod === 'upi'} 
                     onChange={handlePaymentMethodChange} 
+                    required
                   />
                   UPI
                 </label>
@@ -245,6 +265,7 @@ const CheckoutForm = () => {
                       name="cardNumber" 
                       value={paymentDetails.cardNumber} 
                       onChange={handlePaymentChange} 
+                      required
                     />
                     <img src={master} alt="MasterCard" className={styles.paymentIcon} />
                   </div>
@@ -256,6 +277,7 @@ const CheckoutForm = () => {
                         name="expiryDate" 
                         value={paymentDetails.expiryDate} 
                         onChange={handlePaymentChange} 
+                        required
                       />
                     </div>
                     <div className={styles.paymentField}>
@@ -265,6 +287,7 @@ const CheckoutForm = () => {
                         name="cvv" 
                         value={paymentDetails.cvv} 
                         onChange={handlePaymentChange} 
+                        required
                       />
                     </div>
                   </div>
@@ -278,6 +301,7 @@ const CheckoutForm = () => {
                     name="upiId" 
                     value={paymentDetails.upiId} 
                     onChange={handlePaymentChange} 
+                    required
                   />
                   <img src={paypal} alt="PayPal" className={styles.paymentIcon} />
                 </div>

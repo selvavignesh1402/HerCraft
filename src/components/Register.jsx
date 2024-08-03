@@ -184,35 +184,35 @@ function Register() {
     register(name, email, password);
   };
 
-  const handleGoogleLogin = async () => {
-    const auth2 = gapi.auth2.getAuthInstance();
-    if (auth2) {
-      auth2.signIn().then(async (googleUser) => {
-        const idToken = googleUser.getAuthResponse().id_token;
-        try {
-          const response = await fetch('http://localhost:8080/api/userregister/google', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ idToken }),
-          });
-          if (response.ok) {
-            console.log('User logged in with Google');
-            navigate('/home');
-          } else {
-            alert('Google login failed');
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          alert('An error occurred');
-        }
-      });
-    } else {
-      console.error('Google Auth instance not initialized');
-      alert('Google Auth instance not initialized. Please try again.');
-    }
-  };
+  // const handleGoogleLogin = async () => {
+  //   const auth2 = gapi.auth2.getAuthInstance();
+  //   if (auth2) {
+  //     auth2.signIn().then(async (googleUser) => {
+  //       const idToken = googleUser.getAuthResponse().id_token;
+  //       try {
+  //         const response = await fetch('http://localhost:8080/api/userregister/google', {
+  //           method: 'POST',
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           },
+  //           body: JSON.stringify({ idToken }),
+  //         });
+  //         if (response.ok) {
+  //           console.log('User logged in with Google');
+  //           navigate('/home');
+  //         } else {
+  //           alert('Google login failed');
+  //         }
+  //       } catch (error) {
+  //         console.error('Error:', error);
+  //         alert('An error occurred');
+  //       }
+  //     });
+  //   } else {
+  //     console.error('Google Auth instance not initialized');
+  //     alert('Google Auth instance not initialized. Please try again.');
+  //   }
+  // };
 
   return (
     <div>
@@ -269,7 +269,9 @@ function Register() {
               <button type="submit" className="submit-button">Sign Up</button>
             </form>
             <div className='or'>or</div>
-            <button onClick={handleGoogleLogin} className="social-button google">
+            <button 
+            // onClick={handleGoogleLogin} 
+            className="social-button google">
               Continue with Google
             </button>
           </div>

@@ -3,6 +3,7 @@ import Home from './components/Home';
 import Navigator from './Router/Navigator';
 import { AuthProvider } from './components/AuthContext';
 import Google from './components/Google';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <AuthProvider>
           <Navigator />
       </AuthProvider>
-      {/* <Google/> */}
+      {/* <Profile/> */}
     </div>
   );
 }
