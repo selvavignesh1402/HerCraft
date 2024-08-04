@@ -13,6 +13,7 @@ import Checkout from '../components/Checkout';
 import ScrollToTop from '../components/ScrollToTop';
 import ContactUs from '../components/ContactUs';
 import BlogList from '../components/BlogList';
+import TrackOrder from '../components/TrackOrder';
 
 export default function Navigator() {
   return (
@@ -29,6 +30,7 @@ export default function Navigator() {
           <Route path="/category/Fabric" element={<ProductList3 />} />
           <Route path="/connect" element={<BlogList />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/myorder" element={<TrackOrder />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>

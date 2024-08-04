@@ -6,10 +6,13 @@ import NavBar from './Navbar';
 import master from './images/master.png';
 import paypal from './images/paypal.png';
 import axios from 'axios';
+import OrderConfirmation from './OrderConfirmationModal';
 
 const CheckoutForm = () => {
   const { cart } = useCart();
-  const { user } = useAuth(); // Use useAuth to access authenticated user
+  const { user } = useAuth(); 
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
+  const [orderId, setOrderId] = useState(null);
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   const countries = ["India", "United States (US)", "Canada", "United Kingdom (UK)", "Australia"];
@@ -97,17 +100,23 @@ const CheckoutForm = () => {
     };
 
     try {
-      await axios.post('http://localhost:8080/api/orders/order', orderData);
+      const response =   await axios.post('http://localhost:8080/api/orders/order', orderData);
+      setOrderId(response.data.orderId);
+      setOrderConfirmed(true);
       alert('Order placed successfully!');
     } catch (error) {
       console.error('Error placing order:', error);
       alert('Failed to place order');
     }
   };
+  
 
   return (
     <div>
       <NavBar />
+      {orderConfirmed ? (
+        <OrderConfirmation orderId={orderId} />
+      ) : (
       <div className={styles.wrapper}>
         <h1 className={styles.checkoutHeader}>Checkout</h1>
         <div className={styles.container}>
@@ -311,6 +320,7 @@ const CheckoutForm = () => {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 };

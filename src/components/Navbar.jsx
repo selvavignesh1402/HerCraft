@@ -53,7 +53,7 @@ const NavBar = ({ onSearch }) => {
           {dropdownVisible && (
             <div className="dropdown-menu">
               <Link to="/profile" onClick={() => setDropdownVisible(false)}>My Profile</Link>
-              <Link to="/orders" onClick={() => setDropdownVisible(false)}>Orders</Link>
+              <Link to="/myorder" onClick={() => setDropdownVisible(false)}>Orders</Link>
               {isAuthenticated ? (
                 <button onClick={handleLogout} className="logout-button">Logout</button>
               ) : (
