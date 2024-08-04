@@ -124,7 +124,7 @@ import signupimg from './img6.png';
 import NavBar from './Navbar';
 import { gapi } from 'gapi-script';
 
-const clientId = '212963097333-pd12olg4b48egl0gdbdlhb3qa4jc194n.apps.googleusercontent.com'; // Replace with your actual client ID
+// const clientId = '212963097333-pd12olg4b48egl0gdbdlhb3qa4jc194n.apps.googleusercontent.com';
 
 function Register() {
   const [name, setName] = useState('');
@@ -134,28 +134,28 @@ function Register() {
   const navigate = useNavigate();
   const { register } = useAuth();
 
-  useEffect(() => {
-    const initClient = () => {
-      gapi.load('auth2', () => {
-        gapi.auth2.init({
-          client_id: clientId,
-          scope: 'email',
-        });
-      });
-    };
+  // useEffect(() => {
+  //   const initClient = () => {
+  //     gapi.load('auth2', () => {
+  //       gapi.auth2.init({
+  //         client_id: clientId,
+  //         scope: 'email',
+  //       });
+  //     });
+  //   };
 
-    if (window.gapi) {
-      initClient();
-    } else {
-      window.addEventListener('load', initClient);
-    }
+  //   if (window.gapi) {
+  //     initClient();
+  //   } else {
+  //     window.addEventListener('load', initClient);
+  //   }
 
-    return () => {
-      if (window.removeEventListener) {
-        window.removeEventListener('load', initClient);
-      }
-    };
-  }, []);
+  //   return () => {
+  //     if (window.removeEventListener) {
+  //       window.removeEventListener('load', initClient);
+  //     }
+  //   };
+  // }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

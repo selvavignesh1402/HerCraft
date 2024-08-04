@@ -1,0 +1,74 @@
+.order-management {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .order-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .order-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .order-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .order-table input[type="text"],
+  .order-table input[type="date"],
+  .order-table select {
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+  
+  .order-table button {
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  .save-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  
+  .edit-btn {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+  }
+  
+  .add-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  
+  button:focus,
+  input:focus,
+  select:focus {
+    outline: none;
+  }
+  
