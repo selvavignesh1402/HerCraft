@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
-import './TrackOrderPage.css'; // Import the regular CSS file
+import './TrackOrderPage.css';
 import NavBar from './Navbar';
 
 const TrackOrderPage = () => {
@@ -27,9 +27,9 @@ const TrackOrderPage = () => {
 
   return (
     <div>
-      <NavBar/>
-      <div className="wrapper">
-        <h1 className="header">Track Your Order</h1>
+      <NavBar />
+      <div className="track-order-wrapper">
+        <h1 className="track-order-header">Track Your Order</h1>
         <div className="input-container">
           <input
             type="text"
@@ -38,24 +38,49 @@ const TrackOrderPage = () => {
             onChange={handleOrderIdChange}
             className="input"
           />
-          <button onClick={fetchOrderDetails} className="button">Track Order</button>
+          <button onClick={fetchOrderDetails} className="track-button">Track Order</button>
         </div>
         {error && <p className="error">{error}</p>}
         {orderDetails && (
-          <div className="order-details">
-            <h2>Order Details</h2>
-            <p><strong>Order ID:</strong> {orderDetails.id}</p>
-            <p><strong>Customer:</strong> {orderDetails.username}</p>
-            <p><strong>Total Price:</strong> ₹{orderDetails.totalPrice}</p>
-            <h3>Items:</h3>
-            <ul>
-              {orderDetails.items.map((item, index) => (
-                <li key={index}>{item.productName} × {item.quantity} - ₹{item.price}</li>
-              ))}
-            </ul>
-            <div className="order-details">
-              <p><strong>Delivery Address:</strong> {orderDetails.address}</p>
+          <div className="order-details-container">
+            <div className="order-header">
+              {/* <span className="order-date">{new Date(orderDetails.date).toLocaleString()}</span> */}
             </div>
+            <div className="customer-details">
+            <h2>Customer Details</h2>
+              {/* <p><strong>Customer Name:</strong> {orderDetails.userName}</p> */}
+              <span className="order-id">Customer Name: {orderDetails.username}</span>
+              <p><strong>Deleivery Address:</strong> {orderDetails.address}</p>
+            </div>
+            <div className="order-items-header">
+              <span className="item-header">Product</span>
+              <span className="item-header">Quantity</span>
+              <span className="item-header">Price</span>
+            </div>
+            <div className="order-item">
+              <div>
+                <p><strong>{orderDetails.items[0].productName}</strong></p>
+                <p>{orderDetails.items[0].variant}</p>
+                <p>{orderDetails.items[0].color}</p>
+              </div>
+              <div className="item-quantity">
+                {orderDetails.items[0].quantity}
+              </div>
+              <div className="item-price">
+                ₹{orderDetails.items[0].price}
+              </div>
+            </div>
+            <div className="order-summary">
+              <h2>Order Summary</h2>
+              {/* <p>Subtotal: ₹{orderDetails.subtotal}</p>
+              <p>Discount: ₹{orderDetails.discount}</p>
+              <p>Shipping: ₹{orderDetails.shipping}</p> */}
+              <h3>Total: ₹{orderDetails.totalPrice}</h3>
+            </div>
+            {/* <div className="action-buttons">
+              <button className="action-button">Send Invoice</button>
+              <button className="action-button">Collect Payment</button>
+            </div> */}
           </div>
         )}
       </div>
@@ -64,3 +89,4 @@ const TrackOrderPage = () => {
 };
 
 export default TrackOrderPage;
+

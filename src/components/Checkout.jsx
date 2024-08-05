@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from './CartContext';
 import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 import styles from './CheckoutForm.module.css';
 import NavBar from './Navbar';
 import master from './images/master.png';
@@ -10,7 +11,8 @@ import OrderConfirmation from './OrderConfirmationModal';
 
 const CheckoutForm = () => {
   const { cart } = useCart();
-  const { user } = useAuth(); 
+  const { user } = useAuth();
+  const navigate = useNavigate(); 
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [orderId, setOrderId] = useState(null);
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -52,8 +54,10 @@ const CheckoutForm = () => {
         ...prevDetails,
         username: user.name 
       }));
+    } else {
+      navigate('/login'); // Redirect to login if not logged in
     }
-  }, [user]);
+  }, [user, navigate]);
 
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
@@ -84,7 +88,36 @@ const CheckoutForm = () => {
     setPaymentMethod(e.target.value);
   };
 
+  const validatePaymentDetails = () => {
+    if (paymentMethod === 'card') {
+      const { cardNumber, expiryDate, cvv } = paymentDetails;
+      if (!cardNumber.match(/^\d{16}$/)) {
+        alert('Invalid card number');
+        return false;
+      }
+      if (!expiryDate.match(/^\d{4}-\d{2}$/)) {
+        alert('Invalid expiry date');
+        return false;
+      }
+      if (!cvv.match(/^\d{3}$/)) {
+        alert('Invalid CVV');
+        return false;
+      }
+    } else if (paymentMethod === 'upi') {
+      const { upiId } = paymentDetails;
+      if (!upiId.match(/^[\w.\-_]+@[\w]+$/)) {
+        alert('Invalid UPI ID');
+        return false;
+      }
+    }
+    return true;
+  };
+
   const handlePlaceOrder = async () => {
+    if (!validatePaymentDetails()) {
+      return;
+    }
+
     const orderData = {
       ...customerDetails,
       country: selectedCountry,
@@ -100,7 +133,7 @@ const CheckoutForm = () => {
     };
 
     try {
-      const response =   await axios.post('http://localhost:8080/api/orders/order', orderData);
+      const response = await axios.post('http://localhost:8080/api/orders/order', orderData);
       setOrderId(response.data.orderId);
       setOrderConfirmed(true);
       alert('Order placed successfully!');
@@ -109,7 +142,6 @@ const CheckoutForm = () => {
       alert('Failed to place order');
     }
   };
-  
 
   return (
     <div>
