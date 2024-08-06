@@ -110,6 +110,9 @@ const CheckoutForm = () => {
         return false;
       }
     }
+    else if (paymentMethod === 'cod') {
+     //hi
+    }
     return true;
   };
 
@@ -118,11 +121,14 @@ const CheckoutForm = () => {
       return;
     }
 
+    const paymentStatus = paymentMethod === 'cod' ? 'pending' : 'completed';
+
     const orderData = {
       ...customerDetails,
       country: selectedCountry,
       state: selectedState,
       paymentMethod,
+      paymentStatus,
       ...paymentDetails,
       totalPrice,
       items: cart.map(item => ({
@@ -296,6 +302,17 @@ const CheckoutForm = () => {
                   />
                   UPI
                 </label>
+                <label>
+                  <input 
+                    type="radio" 
+                    value="cod" 
+                    checked={paymentMethod === 'cod'} 
+                    onChange={handlePaymentMethodChange} 
+                    required
+                  />
+                  Cash on Delivery
+                </label>
+                
               </div>
               {paymentMethod === 'card' && (
                 <>

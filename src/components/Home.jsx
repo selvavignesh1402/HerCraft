@@ -15,6 +15,7 @@ import fp3 from './images/fp3.png';
 import fpp5 from './images/fpp5.png';
 import fp6 from './images/fp6.jpg';
 import Footer from './Footer';
+import Carousel from './Carousel';
 
 // Category data
 const categories = [
@@ -113,6 +114,9 @@ const Home = () => {
 
                 {/* Featured Products Section */}
                 <Featuredproducts products={featuredProducts} />
+                    <br/>
+                    <br/>
+                    <Carousel/>
                     <br/>
                     <br/>
                 <WhyChooseUs />
