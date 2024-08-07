@@ -8,19 +8,21 @@ import ProductList2 from '../components/ProductList2';
 import ProductList3 from '../components/ProductList3';
 import Profile from '../components/Profile';
 import CartPage from '../components/CartPage';
-import { CartProvider } from '../components/CartContext';
 import Checkout from '../components/Checkout';
 import ScrollToTop from '../components/ScrollToTop';
 import ContactUs from '../components/ContactUs';
 import BlogList from '../components/BlogList';
 import TrackOrder from '../components/TrackOrder';
 import OrdersGrid from '../components/OrdersGrid';
+import { CartProvider } from '../components/CartContext';
+import PrivateRoute from '../components/ProtectedRoute';
+import AdminNavbar from '../Admin/AdminNavbar';
 
 export default function Navigator() {
   return (
     <CartProvider>
       <Router>
-      <ScrollToTop />
+        <ScrollToTop />
         <Routes>
           <Route path="*" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -33,8 +35,9 @@ export default function Navigator() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/myorder" element={<TrackOrder />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/admin/grid" element={<OrdersGrid />} />
+          <Route path="/profile" element={<PrivateRoute component={Profile} />} />
+          {/* <Route path="/admin" element={<PrivateRoute component={AdminNavbar} adminRoute />} /> */}
+          <Route path="/admin" element={<PrivateRoute component={OrdersGrid} adminRoute />} />
         </Routes>
       </Router>
     </CartProvider>

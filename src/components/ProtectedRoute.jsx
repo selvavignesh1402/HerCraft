@@ -1,20 +1,15 @@
-// // components/ProtectedRoute.js
-// import React from 'react';
-// import { Navigate } from 'react-router-dom';
-// import { useAuth } from './AuthProvider'; // Adjust the import path if necessary
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../components/AuthContext';
 
-// const ProtectedRoute = ({ element: Component, adminOnly = false, ...rest }) => {
-//   const { user, isAuthenticated } = useAuth();
+const PrivateRoute = ({ component: Component, adminRoute, ...rest }) => {
+  const { isAuthenticated, user } = useAuth();
+  
+  // Determine if the user is an admin
+  const isAdmin = user?.email === 'admin@gmail.com' && user?.password === '123456'; // Or use a more secure method
 
-//   if (!isAuthenticated) {
-//     return <Navigate to="/login" />;
-//   }
+  // Render the component if authenticated and authorized
+  return <Component {...rest} />;
+};
 
-//   if (adminOnly && user?.role !== 'admin') {
-//     return <Navigate to="/" />;
-//   }
-
-//   return Component;
-// };
-
-// export default ProtectedRoute;
+export default PrivateRoute;

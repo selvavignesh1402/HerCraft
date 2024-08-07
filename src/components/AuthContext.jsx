@@ -23,16 +23,16 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
     };
 
-    const fetchUser = async () => {
-        try {
-          const response = await axios.get('http://localhost:8080/api/auth/currentUser');
-          setUser(response.data);
-        } catch (error) {
-          console.error('Error fetching user:', error);
-        }
-      };
+    // const fetchUser = async () => {
+    //     try {
+    //       const response = await axios.get('http://localhost:8080/api/auth/currentUser');
+    //       setUser(response.data);
+    //     } catch (error) {
+    //       console.error('Error fetching user:', error);
+    //     }
+    //   };
   
-      fetchUser();
+    //   fetchUser();
 
     const logout = () => {
         setIsAuthenticated(false);

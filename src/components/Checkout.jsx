@@ -55,7 +55,7 @@ const CheckoutForm = () => {
         username: user.name 
       }));
     } else {
-      navigate('/login'); // Redirect to login if not logged in
+      navigate('/login');
     }
   }, [user, navigate]);
 
