@@ -58,7 +58,7 @@ const OrdersGrid = () => {
             quantity: item.quantity,
             price: item.price,
           })),
-          status: order.orderStatus,
+          status: order.orderStatus || statuses[0],
           paymentStatus: order.paymentStatus || paymentStatuses[0],
           totalPrice: order.totalPrice,
           address: order.address

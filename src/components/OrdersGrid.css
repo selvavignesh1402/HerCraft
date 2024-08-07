@@ -62,7 +62,15 @@
   margin-bottom: 10px;
 }
 
-input[type="text"],
+input[type="text"] {
+  width: 96%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
 input[type="number"],
 select {
   width: 100%;
