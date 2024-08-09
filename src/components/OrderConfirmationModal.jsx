@@ -16,8 +16,8 @@ const OrderConfirmation = ({ orderId }) => {
         <p>Your order ID is <strong>{orderId}</strong></p>
         <button className={styles.trackOrderButton} onClick={handleCopyOrderId}>Copy Order ID</button>
         <br/>
-        <Link to={'/myorder'}>
-        <button className={styles.trackOrderButton}>Track Your Order</button>
+        <Link to={'/'}>
+        <button className={styles.trackOrderButton}>Continue Shopping</button>
         </Link>
       </div>
     </div>

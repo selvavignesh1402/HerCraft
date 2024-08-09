@@ -12,12 +12,14 @@ import painting from './images/paintings-icon.png';
 import fp1 from './images/slider-1.png';
 import fp2 from './images/fp2.png';
 import fp3 from './images/fp3.png';
+import fp5 from './images/fp5.webp';
+import fp7 from './images/fp6.jfif';
 import fpp5 from './images/fpp5.png';
 import fp6 from './images/fp6.jpg';
 import Footer from './Footer';
 import Carousel from './Carousel';
+import { Link as ScrollLink } from 'react-scroll';
 
-// Category data
 const categories = [
     { name: 'jwellery', products: 6, imgSrc: jwellery },
     { name: 'Decor', products: 9, imgSrc: Decor },
@@ -25,7 +27,7 @@ const categories = [
     { name: 'painting', products: 11, imgSrc: painting }
 ];
 
-// Featured products data
+
 const featuredProducts = [
     {
         name: 'Handcrafted Necklace',
@@ -38,7 +40,7 @@ const featuredProducts = [
         name: 'Decorative Vase',
         type: 'Decor',
         price: 300,
-        originalPrice: 40,
+        originalPrice: 500,
         sale: true,
         imgSrc: fp3,
     },
@@ -47,7 +49,7 @@ const featuredProducts = [
         type: 'Fabric',
         price: 200,
         sale: false,
-        imgSrc: fpp5,
+        imgSrc: fp7,
     },
     {
         name: 'Abstract Painting',
@@ -58,7 +60,7 @@ const featuredProducts = [
     },
 ];
 
-// CategoryCard component
+
 const CategoryCard = ({ name, products, imgSrc }) => (
     <Link to={`/category/${name}`} className="category-card-link">
         <div className="category-card">
@@ -95,11 +97,14 @@ const Home = () => {
                         <p className="description">
                             Discover unique, handcrafted products made by talented women entrepreneurs. Your purchase empowers their creativity and supports their business.
                         </p>
+                        <ScrollLink to="shop" smooth={true} duration={500}>
                         <button className="shop-now-button">Shop Now</button>
+                        </ScrollLink>
                     </div>
                 </div>
 
                 {/* Shop by Category Section */}
+                <section id='shop'>
                 <h1 className="shop-category-title">Shop by category</h1>
                 <div className="category-container">
                     {categories.map(category => (
@@ -111,6 +116,7 @@ const Home = () => {
                         />
                     ))}
                 </div>
+            </section>
 
                 {/* Featured Products Section */}
                 <Featuredproducts products={featuredProducts} />

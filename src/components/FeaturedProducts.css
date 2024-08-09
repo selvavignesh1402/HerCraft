@@ -28,14 +28,15 @@
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 200px;
+    height: 290px;
     margin: 10px;
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .product-card:hover {
-    transform: translateY(-10px); /* Slightly lift the card */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance the shadow */
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .product-image {

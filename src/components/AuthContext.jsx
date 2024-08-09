@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
@@ -7,11 +7,21 @@ export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [user, setUser] = useState(null);
 
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+            setIsAuthenticated(true);
+        }
+    }, []);
+
     const login = async (email, password) => {
         try {
             const response = await axios.post('http://localhost:8080/api/auth/login', { email, password });
-            setUser(response.data);
+            const userData = response.data;
+            setUser(userData);
             setIsAuthenticated(true);
+            localStorage.setItem('user', JSON.stringify(userData));
         } catch (error) {
             console.error('Login failed:', error);
             throw new Error('Invalid email or password');
@@ -19,24 +29,15 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = (name, email, password) => {
-        // console.log('Registered with:', name, email, password);
+        // Assuming you handle registration and response similarly to login
         setIsAuthenticated(true);
+        // Store user details in local storage if needed
     };
-
-    // const fetchUser = async () => {
-    //     try {
-    //       const response = await axios.get('http://localhost:8080/api/auth/currentUser');
-    //       setUser(response.data);
-    //     } catch (error) {
-    //       console.error('Error fetching user:', error);
-    //     }
-    //   };
-  
-    //   fetchUser();
 
     const logout = () => {
         setIsAuthenticated(false);
         setUser(null);
+        localStorage.removeItem('user');
     };
 
     return (

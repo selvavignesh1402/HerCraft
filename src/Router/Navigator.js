@@ -17,6 +17,7 @@ import OrdersGrid from '../components/OrdersGrid';
 import { CartProvider } from '../components/CartContext';
 import PrivateRoute from '../components/ProtectedRoute';
 import AdminNavbar from '../Admin/AdminNavbar';
+import UsersGrid from '../components/UsersGrid';
 
 export default function Navigator() {
   return (
@@ -38,6 +39,7 @@ export default function Navigator() {
           <Route path="/profile" element={<PrivateRoute component={Profile} />} />
           {/* <Route path="/admin" element={<PrivateRoute component={AdminNavbar} adminRoute />} /> */}
           <Route path="/admin" element={<PrivateRoute component={OrdersGrid} adminRoute />} />
+          <Route path="/admin/users" element={<PrivateRoute component={UsersGrid} adminRoute />} />
         </Routes>
       </Router>
     </CartProvider>

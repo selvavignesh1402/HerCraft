@@ -7,6 +7,7 @@ import { useCart } from './CartContext';
 import userprofile from './images/user.png';
 import bag from './images/bag.png';
 import search from './images/searchh.png';
+import { Link as ScrollLink } from 'react-scroll';
 
 const NavBar = ({ onSearch }) => {
   const { isAuthenticated, logout } = useAuth();
@@ -37,7 +38,11 @@ const NavBar = ({ onSearch }) => {
         </Link>
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><a href="#shop">Shop</a></li>
+          <li>
+          <ScrollLink to="shop" smooth={true} duration={500}>
+              Shop
+          </ScrollLink>
+            </li>
           <li><Link to="/connect">Connect</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>

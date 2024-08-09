@@ -16,7 +16,7 @@ function Login() {
     event.preventDefault();
     try {
       if (email === 'admin@gmail.com' && password === '123456') {
-        navigate('/admin/grid');
+        navigate('/admin');
       } else {
         await login(email, password);
         navigate('/'); // Redirect to user profile or dashboard after successful login
