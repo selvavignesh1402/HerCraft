@@ -11,7 +11,7 @@ import OrderConfirmation from './OrderConfirmationModal';
 
 const CheckoutForm = () => {
   const { cart } = useCart();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate(); 
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [orderId, setOrderId] = useState(null);
@@ -49,7 +49,7 @@ const CheckoutForm = () => {
   });
 
   useEffect(() => {
-    if (user) {
+    if (user && isAuthenticated) {
       setCustomerDetails(prevDetails => ({
         ...prevDetails,
         username: user.name 
@@ -57,7 +57,7 @@ const CheckoutForm = () => {
     } else {
       navigate('/login');
     }
-  }, [user, navigate]);
+  }, [user, navigate, isAuthenticated]);
 
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
@@ -116,7 +116,11 @@ const CheckoutForm = () => {
     return true;
   };
 
-  const handlePlaceOrder = async () => {
+  const handleSubmit = (e) => {
+  }
+  
+  const handlePlaceOrder = async (e) => {
+    e.preventDefault();
     if (!validatePaymentDetails()) {
       return;
     }
@@ -155,6 +159,7 @@ const CheckoutForm = () => {
       {orderConfirmed ? (
         <OrderConfirmation orderId={orderId} />
       ) : (
+        <form onSubmit={handlePlaceOrder}>
       <div className={styles.wrapper}>
         <h1 className={styles.checkoutHeader}>Checkout</h1>
         <div className={styles.container}>
@@ -365,10 +370,11 @@ const CheckoutForm = () => {
                 </div>
               )}
             </div>
-            <button className={styles.placeOrderButton} onClick={handlePlaceOrder}>Place Order</button>
+            <button type='submit' className={styles.placeOrderButton}>Place Order</button>
           </div>
         </div>
       </div>
+   </form>   
       )}
     </div>
   );

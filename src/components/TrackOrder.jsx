@@ -3,11 +3,14 @@ import axios from 'axios';
 import { useAuth } from './AuthContext';
 import './TrackOrderPage.css';
 import NavBar from './Navbar';
+import { Stepper, Step, StepLabel } from '@mui/material';
 
 const TrackOrderPage = () => {
   const { user } = useAuth();
   const [orderDetails, setOrderDetails] = useState([]);
   const [error, setError] = useState('');
+
+  const steps = ['Order Placed', 'Processing', 'Shipped', 'Delivered'];
 
   useEffect(() => {
     const fetchOrderDetails = async () => {
@@ -26,6 +29,21 @@ const TrackOrderPage = () => {
     fetchOrderDetails();
   }, [user]);
 
+  const getOrderStep = (status) => {
+    switch (status) {
+      case 'Order Placed':
+        return 0;
+      case 'Processing':
+        return 1;
+      case 'Shipped':
+        return 2;
+      case 'Delivered':
+        return 3;
+      default:
+        return 0;
+    }
+  };
+
   return (
     <div>
       <NavBar />
@@ -36,13 +54,22 @@ const TrackOrderPage = () => {
         {orderDetails.map((order) => (
           <div key={order.orderId} className="order-details-container">
             <div className="order-header">
-              <span className="order-date">{(order.createdAt)}</span>
+              <span className="order-date">{new Date(order.createdAt).toLocaleDateString()}</span>
             </div>
             <div className="customer-details">
               <h2>Customer Details</h2>
               <p><strong>Customer Name:</strong> {order.username}</p>
               <p><strong>Order Status:</strong> {order.orderStatus}</p>
               <p><strong>Delivery Address:</strong> {order.address}</p>
+            </div>
+            <div className="order-stepper">
+              <Stepper activeStep={getOrderStep(order.orderStatus)} alternativeLabel>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
             </div>
             <div className="order-items-header">
               <span className="item-header">Product</span>
@@ -51,10 +78,17 @@ const TrackOrderPage = () => {
             </div>
             {order.items.map((item, index) => (
               <div key={index} className="order-item">
-                <div>
-                  <p><strong>{item.productName}</strong></p>
-                  <p>{item.variant}</p>
-                  <p>{item.color}</p>
+                <div className="item-details">
+                  {/* <img 
+                    src={item.productImage} 
+                    alt={item.productName} 
+                    className="product-image" 
+                  /> */}
+                  <div>
+                    <p><strong>{item.productName}</strong></p>
+                    <p>{item.variant}</p>
+                    <p>{item.color}</p>
+                  </div>
                 </div>
                 <div className="item-quantity">
                   {item.quantity}
@@ -66,7 +100,12 @@ const TrackOrderPage = () => {
             ))}
             <div className="order-summary">
               <h2>Order Summary</h2>
-              <h3>Total: ₹{order.totalPrice}</h3>
+              <p><strong>Total Price:</strong> ₹{order.totalPrice}</p>
+              <p><strong>Payment Status:</strong> {order.paymentStatus}</p>
+            </div>
+            <div className="action-buttons">
+              <button className="action-button">Download Invoice</button>
+              <button className="action-button">Contact Support</button>
             </div>
           </div>
         ))}

@@ -13,6 +13,8 @@ import p26 from './images/p26.jpg';
 import p27 from './images/p27.jpg';
 import { useCart } from './CartContext';
 import { ToastContainer, toast } from 'react-toastify';
+
+
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './Footer';
 

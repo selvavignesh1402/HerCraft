@@ -1,0 +1,25 @@
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    color: #000; /* Changed text color to black for better readability on light background */
+  }
+  
+  .card {
+    width: 30%;
+    background-color: #fff; /* Changed background color to white */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    margin-bottom: 20px;
+    height: 50%;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  

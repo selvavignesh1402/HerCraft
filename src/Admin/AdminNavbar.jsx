@@ -15,7 +15,7 @@ const AdminNavbar = () => {
             </div>
             <div className="admin-sidenav-links">
                 <ul>
-                    <li><Link to="">DashBoard</Link></li>
+                    <li><Link to="/admin/dashboard">DashBoard</Link></li>
                     <li><Link to="/admin">Orders</Link></li>
                     <li><Link to="/admin/users">Customers</Link></li>
                     <li><Link to="">Add product</Link></li>

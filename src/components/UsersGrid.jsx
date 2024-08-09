@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './UsersGrid.css';  // Make sure the path is correct
+import './UsersGrid.css'; 
 import AdminNavbar from '../Admin/AdminNavbar';
+import {Alert} from '@mui/material';
 
 const getRandomId = () => Math.random().toString(36).substr(2, 9);
 
 const UsersGrid = () => {
   const [users, setUsers] = useState([]);
   const [editingUserId, setEditingUserId] = useState(null);
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertVisible, setAlertVisible] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,8 +27,8 @@ const UsersGrid = () => {
           userId: user.id,
           username: user.name,
           email: user.email,
-          role: user.role,
-          status: user.status,
+          // role: user.role,
+          // status: user.status,
         }));
         setUsers(fetchedUsers);
       } catch (error) {
@@ -37,53 +40,62 @@ const UsersGrid = () => {
     fetchData();
   }, []);
 
-  const handleEditUser = (id) => {
-    setEditingUserId(id);
-  };
+  // const handleEditUser = (id) => {
+  //   setEditingUserId(id);
+  // };
 
-  const handleSaveUser = async (id) => {
-    const updatedUser = users.find(user => user.id === id);
-    try {
-      await axios.put(`http://localhost:8080/api/users/${updatedUser.userId}`, {
-        username: updatedUser.username,
-        email: updatedUser.email,
-        role: updatedUser.role,
-        status: updatedUser.status
-      }, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json'
-        }
-      });
-      setEditingUserId(null);
-    } catch (error) {
-      console.error('Error saving data:', error);
-    }
-  };
+  // const handleSaveUser = async (id) => {
+  //   const updatedUser = users.find(user => user.id === id);
+  //   try {
+  //     await axios.put(`http://localhost:8080/api/users/${updatedUser.userId}`, {
+  //       username: updatedUser.username,
+  //       email: updatedUser.email,
+  //       role: updatedUser.role,
+  //       status: updatedUser.status
+  //     }, {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem('token')}`,
+  //         'Content-Type': 'application/json'
+  //       }
+  //     });
+  //     setEditingUserId(null);
+  //   } catch (error) {
+  //     console.error('Error saving data:', error);
+  //   }
+  // };
 
   const handleDeleteUser = async (id) => {
     const userToDelete = users.find(user => user.id === id);
     try {
-      await axios.delete(`http://localhost:8080/api/users/${userToDelete.userId}`, {
+      await axios.delete(`http://localhost:8080/api/userregister/delete/${userToDelete.userId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         }
       });
+       
       setUsers(users.filter((user) => user.id !== id));
+      setAlertMessage(`User ${userToDelete.username} deleted successfully.`);
+      setAlertVisible(true);
+      setTimeout(() => setAlertVisible(false), 2000);
     } catch (error) {
       console.error('Error deleting data:', error);
     }
   };
 
-  const handleUserChange = (e, id) => {
-    const { name, value } = e.target;
-    setUsers(users.map((user) => (user.id === id ? { ...user, [name]: value } : user)));
-  };
+  // const handleUserChange = (e, id) => {
+  //   const { name, value } = e.target;
+  //   setUsers(users.map((user) => (user.id === id ? { ...user, [name]: value } : user)));
+  // };
 
   return (
     <div className="admin-container">
       <AdminNavbar />
       <p className='um'>User Management</p>
+      {alertVisible && (
+        <Alert severity="success" className="success-alert">
+          {alertMessage}
+        </Alert>
+      )}
       <div className="user-management">
         <table className="user-table">
           <thead>
@@ -91,8 +103,6 @@ const UsersGrid = () => {
               <th>User ID</th>
               <th>Username</th>
               <th>Email</th>
-              {/* <th>Role</th>
-              <th>Status</th> */}
               <th>Actions</th>
             </tr>
           </thead>
@@ -115,8 +125,9 @@ const UsersGrid = () => {
                         type="text"
                         name="username"
                         value={user.username}
-                        onChange={(e) => handleUserChange(e, user.id)}
+                        // onChange={(e) => handleUserChange(e, user.id)}
                         className="input-field"
+                        readOnly
                         required
                       />
                     </td>
@@ -125,44 +136,22 @@ const UsersGrid = () => {
                         type="email"
                         name="email"
                         value={user.email}
-                        onChange={(e) => handleUserChange(e, user.id)}
+                        // onChange={(e) => handleUserChange(e, user.id)}
                         className="input-field"
+                        readOnly
                         required
                       />
                     </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="role"
-                        value={user.role}
-                        onChange={(e) => handleUserChange(e, user.id)}
-                        className="input-field"
-                        required
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="status"
-                        value={user.status}
-                        onChange={(e) => handleUserChange(e, user.id)}
-                        className="input-field"
-                        required
-                      />
-                    </td>
-                    <td>
+                    {/* <td>
                       <button className="save-btn" onClick={() => handleSaveUser(user.id)}>Save</button>
-                    </td>
+                    </td> */}
                   </>
                 ) : (
                   <>
                     <td>{user.userId}</td>
                     <td>{user.username}</td>
                     <td>{user.email}</td>
-                    {/* <td>{user.role}</td>
-                    <td>{user.status}</td> */}
                     <td>
-                      <button className="edit-btn" onClick={() => handleEditUser(user.id)}>Edit</button>
                       <button className="delete-btn" onClick={() => handleDeleteUser(user.id)}>Delete</button>
                     </td>
                   </>

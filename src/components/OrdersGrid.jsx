@@ -2,21 +2,23 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './OrdersGrid.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faTruck, faCheckCircle, faTimesCircle, faDollarSign, faCreditCard, faCheck, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faTruck,CiStopwatch,faCog,faCheckCircle, faTimesCircle, faDollarSign, faCreditCard, faCheck, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import AdminNavbar from '../Admin/AdminNavbar';
 
-const statuses = ['waiting', 'Shipped', 'Delivered', 'Cancelled'];
+const statuses = ['waiting', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 const statusIcons = {
   waiting: faClock,
+  Processing: faCog,
   Shipped: faTruck,
   Delivered: faCheckCircle,
   Cancelled: faTimesCircle
 };
 const statusColors = {
-  waiting: '#FFA500', // Orange
-  Shipped: '#1E90FF', // DodgerBlue
-  Delivered: '#32CD32', // LimeGreen
-  Cancelled: '#FF4500' // OrangeRed
+  waiting: '#FFA500', 
+  Processing: '#FFD700',
+  Shipped: '#1E90FF', 
+  Delivered: '#32CD32', 
+  Cancelled: '#FF4500'
 };
 
 const paymentStatuses = ['pending', 'completed', 'Failed', 'Refunded'];

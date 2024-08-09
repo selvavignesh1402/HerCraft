@@ -7,6 +7,8 @@ import Google from './components/Google';
 import Profile from './components/Profile';
 import Carousel from './components/Carousel';
 import OrdersGrid from './components/OrdersGrid';
+import OTPVerification from './components/OTPVerification';
+import Dashboard from './components/Dashboard';
 
 
 function App() {
@@ -15,8 +17,7 @@ function App() {
       <AuthProvider>
           <Navigator />
       </AuthProvider>
-      {/* <OrdersGrid/> */}
-      {/* <Carousel/> */}
+      {/* <Dashboard/> */}
       
     </div>
   );
