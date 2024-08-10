@@ -1,20 +1,29 @@
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    /* background-color: #ffffff; */
+    color: #000000;
+    height: 100vh; /* Full viewport height */
+}
+
 .admin-sidenav {
     height: 100vh;
     width: 225px;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text */
     padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
 .admin-sidenav-header {
-    padding: 30px;
+    padding: 22px;
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    border-bottom: 1px  #888888;
+    border-bottom: 1px solid #888888; 
 }
 
 .admin-sidenav-links ul {
@@ -29,25 +38,41 @@
 
 .admin-sidenav-links a {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: #000000;
     display: block;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 .admin-sidenav-links a:hover {
-    background-color: #ffffff;
+    color: #007bff; /* Change text color to blue on hover */
 }
 
-.admin-top{
+.admin-top {
     background-color: #ffffff;
     width: 100%;
+    padding: 2%;
     margin-bottom: 50px;
+    position: fixed;
     top: 0;
+    left: 225px; /* Align with the sidenav */
+    height: 31px; /* Fixed height */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+    display: flex;
+    align-items: center;
+    z-index: 1000; /* Ensure it stays above the sidenav */
+    border-bottom: 1px solid #888888; 
 }
 
-.top{
-    padding: 2%;
-    background-color: ffffff;
-    margin-top: -35px;
+.top {
+    margin-top: 0;
     margin-left: 180px;
-    
+    color: #000000;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.admin-logo {
+    height: 40px;
+    margin-right: 10px;
 }

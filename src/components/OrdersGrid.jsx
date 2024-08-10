@@ -108,8 +108,8 @@ const OrdersGrid = () => {
   return (
     <div className="admin-container">
       <AdminNavbar/>
-        <p className='om'>Order Management</p>
       <div className="order-management">
+        <p className='om'>Order Management</p>
         <table className="order-table">
           <thead>
             <tr>

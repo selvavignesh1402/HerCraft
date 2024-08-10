@@ -90,13 +90,13 @@ const UsersGrid = () => {
   return (
     <div className="admin-container">
       <AdminNavbar />
-      <p className='um'>User Management</p>
       {alertVisible && (
         <Alert severity="success" className="success-alert">
           {alertMessage}
         </Alert>
       )}
       <div className="user-management">
+      <p className='um'>User Management</p>
         <table className="user-table">
           <thead>
             <tr>

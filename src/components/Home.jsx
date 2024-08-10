@@ -19,6 +19,7 @@ import fp6 from './images/fp6.jpg';
 import Footer from './Footer';
 import Carousel from './Carousel';
 import { Link as ScrollLink } from 'react-scroll';
+import BannerSection from './BannerSection';
 
 const categories = [
     { name: 'jwellery', products: 6, imgSrc: jwellery },
@@ -117,11 +118,17 @@ const Home = () => {
                     ))}
                 </div>
             </section>
-
+        <br/>
+        <br/>
+        <br/>
+                    <BannerSection/>
                 {/* Featured Products Section */}
                 <Featuredproducts products={featuredProducts} />
                     <br/>
                     <br/>
+                    <br/>
+        <br/>
+        <br/>
                     <Carousel/>
                     <br/>
                     <br/>

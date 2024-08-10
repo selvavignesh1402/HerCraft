@@ -19,6 +19,8 @@ import PrivateRoute from '../components/ProtectedRoute';
 import AdminNavbar from '../Admin/AdminNavbar';
 import UsersGrid from '../components/UsersGrid';
 import Dashboard from '../components/Dashboard';
+import ProductForm from '../components/ProductForm';
+import AboutUs from '../components/AboutUs';
 
 export default function Navigator() {
   return (
@@ -37,11 +39,13 @@ export default function Navigator() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/myorder" element={<TrackOrder />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/profile" element={<PrivateRoute component={Profile} />} />
           {/* <Route path="/admin" element={<PrivateRoute component={AdminNavbar} adminRoute />} /> */}
           <Route path="/admin" element={<PrivateRoute component={OrdersGrid} adminRoute />} />
           <Route path="/admin/users" element={<PrivateRoute component={UsersGrid} adminRoute />} />
           <Route path="/admin/dashboard" element={<PrivateRoute component={Dashboard} adminRoute />} />
+          <Route path="/admin/addproduct" element={<PrivateRoute component={ProductForm} adminRoute />} />
         </Routes>
       </Router>
     </CartProvider>

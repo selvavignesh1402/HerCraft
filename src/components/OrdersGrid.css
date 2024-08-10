@@ -1,26 +1,28 @@
 .order-management {
   padding: 20px;
-  padding-bottom: 0%;
-  background-color: #f9f9f9;
+  padding-top: 8%;
+  /* background-color: #f9f9f9; */
   color: #333;
   font-family: 'Roboto', sans-serif;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   flex: 1;
-  margin-left: 220px;
+  margin-left: 208px;
+  height: 100px;
+  /* width: 100%; */
 }
 
 .om {
   font-size: 28px;
   color: #3f72af;
   margin-bottom: 20px;
-  text-align: center;
-  padding-left: 180px;
+  text-align: left;
+  /* padding-left: 180px; */
   font-weight: bold;
 }
 
 .order-table {
-  width: 100%;
+  width: 101%;
   border-collapse: collapse;
   margin-top: 20px;
 }

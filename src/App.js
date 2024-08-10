@@ -9,6 +9,8 @@ import Carousel from './components/Carousel';
 import OrdersGrid from './components/OrdersGrid';
 import OTPVerification from './components/OTPVerification';
 import Dashboard from './components/Dashboard';
+import ProductForm from './components/ProductForm';
+import ProductList from './components/ProductList';
 
 
 function App() {
@@ -17,7 +19,8 @@ function App() {
       <AuthProvider>
           <Navigator />
       </AuthProvider>
-      {/* <Dashboard/> */}
+      {/* <ProductForm/>
+      <ProductList/> */}
       
     </div>
   );
