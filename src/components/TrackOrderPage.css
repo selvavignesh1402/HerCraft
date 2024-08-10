@@ -179,13 +179,13 @@
 }
 
 /* Adding images */
-.product-image {
+/* .product-image {
   width: 80px;
   height: 80px;
   margin-right: 20px;
   border-radius: 8px;
   object-fit: cover;
-}
+} */
 
 .order-main{
   display: flex;
