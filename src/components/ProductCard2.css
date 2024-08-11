@@ -5,12 +5,12 @@ body {
   .contact2-header {
     background: url('./images/p2.jpg')  center center fixed;
     background-size: cover;
-    height: 65vh;
+    height: 64vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 205vh;
+    width: 206vh;
     margin-top: 90px;
   }
 
@@ -92,7 +92,7 @@ body {
     .product-image {
       width: 95%;
       height: auto;
-      border-radius: 10px;
+      /* border-radius: 10px; */
     }
     
     .product-name {

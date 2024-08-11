@@ -43,6 +43,7 @@ const NavBar = ({ onSearch }) => {
               Shop
           </ScrollLink>
             </li>
+          <li><Link to="/connect">Connect</Link></li>
           <li><Link to="/aboutus">AboutUs</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>

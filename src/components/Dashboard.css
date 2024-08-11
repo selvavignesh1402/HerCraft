@@ -7,7 +7,7 @@
     color: #000; /* Changed text color to black for better readability on light background */
   }
   
-  .card {
+  .dcard {
     /* width: 30%; */
     background-color: #fff; /* Changed background color to white */
     padding: 20px;
@@ -33,7 +33,7 @@
   color: #000; 
 }
 
-.card {
+.dcard {
   width: 30%;
   background-color: #fff; 
   padding: 20px;

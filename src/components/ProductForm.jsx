@@ -57,7 +57,8 @@ const ProductForm = () => {
               value={product.name}
               onChange={handleInputChange}
               placeholder="Write title here..."
-              className="form-control textfield"  // Applied className textfield
+              // className="form-control textfield"  
+              style={{ border: '1px solid #ccc', padding: '10px' }}
             />
           </div>
           <div className="form-group">
@@ -68,7 +69,7 @@ const ProductForm = () => {
               value={product.description}
               onChange={handleInputChange}
               placeholder="Write a description here..."
-              className="form-control textfield"  // Applied className textfield
+              className="form-control textfield" 
             />
           </div>
           <div className="form-group">

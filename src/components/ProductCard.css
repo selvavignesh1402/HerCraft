@@ -92,7 +92,7 @@ body {
   .product-image {
     width: 95%;
     height: auto;
-    border-radius: 10px;
+    /* border-radius: 10px; */
   }
   
   .product-name {

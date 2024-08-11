@@ -32,7 +32,7 @@ function Dashboard() {
     <div>
       <AdminNavbar />
       <div className="dashboard">
-        <div className="card">
+        <div className="dcard">
           <h3>Total Orders</h3>
           <ResponsiveContainer width="100%" height={150}>
             <BarChart data={orderStatusData}>
@@ -50,7 +50,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="dcard">
           <h3>Order Status</h3>
           <ResponsiveContainer width="100%" height={150}>
             <PieChart>
@@ -70,7 +70,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="dcard">
           <h3>New Customers</h3>
           <ResponsiveContainer width="100%" height={150}>
             <LineChart data={customerData}>

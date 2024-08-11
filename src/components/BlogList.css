@@ -1,8 +1,9 @@
 .blog-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 15px;
   padding: 16px;
+  margin-top: 150px;
 }
 
 /* .contact4-header {

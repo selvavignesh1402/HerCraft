@@ -43,7 +43,7 @@
     width: 100%; /* Ensures images fit the card width */
     height: 150px; /* Set a specific height */
     object-fit: cover; /* Ensures image aspect ratio is maintained */
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
 
 .sale-badge {
