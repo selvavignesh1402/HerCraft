@@ -3,11 +3,15 @@ import './AboutUs.css';
 import as1 from '../components/images/as1.jpg';
 import as2 from '../components/images/as2.jpg';
 import NavBar from './Navbar';
-import Footer from './Footer';
+import Footer2 from './Footer2';
 
 function AboutUs() {
     return (
-    <div>
+      <div>
+
+      
+      <div>
+
         <NavBar/>
         <div className="homepage">
      <div className='as-main'>
@@ -74,8 +78,12 @@ function AboutUs() {
           <img src={as2} alt="Handcraft sellers" />
         </div>
           </div>
-    </div>
         </div>
+        <div>
+    </div>
+</div>
+</div>
+        {/* <Footer2/> */}
 </div>
       );
 }

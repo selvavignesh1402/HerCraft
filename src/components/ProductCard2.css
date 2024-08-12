@@ -26,7 +26,7 @@ body {
     color: #ffffff;
   }
   
-  .sidebar {
+  /* .sidebar {
     position: absolute;
     top: 600px;
     left: 0;
@@ -65,7 +65,7 @@ body {
   .sidebar ul li:hover {
     text-decoration: underline;
   }
-  
+   */
   .grid {
     display: flex;
     flex-wrap: wrap;

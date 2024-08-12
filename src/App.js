@@ -11,6 +11,8 @@ import OTPVerification from './components/OTPVerification';
 import Dashboard from './components/Dashboard';
 import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
+import OtpVerification from './components/OTPVerification';
+import Footer2 from './components/Footer2';
 
 
 function App() {
@@ -19,8 +21,10 @@ function App() {
       <AuthProvider>
           <Navigator />
       </AuthProvider>
+      {/* <Footer2/> */}
       {/* <ProductForm/>
       <ProductList/> */}
+      {/* <OtpVerification/> */}
       
     </div>
   );

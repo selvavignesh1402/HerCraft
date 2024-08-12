@@ -1,6 +1,8 @@
+// Sidebar.js
 import React, { useState } from 'react';
+import './Sidebar.css'; // Ensure you have your CSS styles
 
-const Sidebar = ({ onSearch, onFilter }) => {
+const Sidebar = ({ onSearch, onFilter, onSortPrice }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [priceRange, setPriceRange] = useState([50, 100]);
 
@@ -17,9 +19,17 @@ const Sidebar = ({ onSearch, onFilter }) => {
     onFilter(newRange);
   };
 
+  const handleSort = (order) => {
+    if (typeof onSortPrice === 'function') {
+      onSortPrice(order);
+    } else {
+      console.error('onSortPrice is not a function');
+    }
+  };
+
   return (
     <div className="sidebar open">
-        <h2>Filter Products!</h2>
+      <h2>Filter Products!</h2>
       <input
         type="text"
         placeholder="Search products..."
@@ -45,7 +55,13 @@ const Sidebar = ({ onSearch, onFilter }) => {
         <p>₹{priceRange[0]} - ₹{priceRange[1]}</p>
       </div>
       <div>
+        <h2>Sort by price</h2>
+        <button onClick={() => handleSort('asc')}>Low to High</button>
+        <button onClick={() => handleSort('desc')}>High to Low</button>
+      </div>
+      <div>
         <h2>Categories</h2>
+        {/* Uncomment and add categories if needed */}
         {/* <ul>
           <li onClick={() => onSearch('')}>All</li>
           <li onClick={() => onSearch('Necklace')}>Necklaces</li>

@@ -1,51 +1,71 @@
 .dashboard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 20px;
-    color: #000; /* Changed text color to black for better readability on light background */
-  }
-  
-  .dcard {
-    /* width: 30%; */
-    background-color: #fff; /* Changed background color to white */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    margin-bottom: 20px;
-    height: 50%;
-  }
-  
-  .stats {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
+  padding-top: 100px;
+  /* background-color: #ffffff;
+  color: rgb(0, 0, 0); */
+}
 
-/* .dashboard {
+.summary-cards {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 20px;
-  color: #000; 
+  justify-content:space-around;
+  margin-bottom: 50px;
+  padding-left: 220px;
+  gap: 50px;
 }
 
 .dcard {
-  width: 30%;
-  background-color: #fff; 
-  padding: 20px;
+  /* background-color: #ffffff; */
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  margin-bottom: 20px;
-  height: 50%;
+  padding: 20px;
+  width: 40%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 121px;
 }
 
-.stats {
+.dcard-content {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-} */
+  align-items: center;
+}
 
+.charts{
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-between;
+}
+.icon {
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.new-orders {
+  border-left: 5px solid #4CAF50;
+  background-color: rgb(238, 238, 238);
+}
+
+.on-hold {
+  border-left: 5px solid #FFC107;
+  background-color: rgb(238, 238, 238);
+}
+
+.out-of-stock {
+  border-left: 5px solid #F44336;
+  background-color: rgb(238, 238, 238);
+}
+
+.chart-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.dhead{
+  padding-right: 50%;
+  font-size: 28px;
+  color: #3f72af;
+  margin-bottom: 50px;
+  /* text-align: left; */
+  /* padding-left: 180px; */
+  font-weight: bold;
+}

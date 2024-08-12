@@ -8,6 +8,7 @@ import master from './images/master.png';
 import paypal from './images/paypal.png';
 import axios from 'axios';
 import OrderConfirmation from './OrderConfirmationModal';
+import Footer2 from './Footer2';
 
 const CheckoutForm = () => {
   const { cart } = useCart();
@@ -376,6 +377,7 @@ const CheckoutForm = () => {
       </div>
    </form>   
       )}
+      {/* <Footer2/> */}
     </div>
   );
 };

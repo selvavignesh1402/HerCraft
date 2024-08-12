@@ -10,7 +10,7 @@
     border-radius: 10px;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     flex: 1;
-    padding-right: 505px;
+    padding-right: 470px;
   }
   
   .um {
@@ -23,7 +23,7 @@
   }
   
   .user-table {
-    width: 224%;
+    width: 212%;
     border-collapse: collapse;
     margin-top: 20px;
   }

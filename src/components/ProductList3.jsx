@@ -16,7 +16,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from './Footer';
+import Footer2 from './Footer2';
 
 const products = [
   { id: 17, image: p24, name: 'Vintage Rectangle Necklace', price: 50.00,rating: 4 },
@@ -94,7 +94,7 @@ const ProductList3 = () => {
       </div> */}
       <br />
       <br />
-      <Footer/>
+      <Footer2/>
     </div>
   );
 };

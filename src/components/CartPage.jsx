@@ -4,6 +4,7 @@ import './CartPage.css';
 import Navbar from './Navbar';
 import { Alert, Snackbar } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Footer2 from './Footer2';
 
 const CartPage = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
@@ -60,6 +61,7 @@ const CartPage = () => {
           </>
         )}
       </div>
+      {/* <Footer2/> */}
     </div>
   );
 };

@@ -21,6 +21,8 @@ import UsersGrid from '../components/UsersGrid';
 import Dashboard from '../components/Dashboard';
 import ProductForm from '../components/ProductForm';
 import AboutUs from '../components/AboutUs';
+import ProductList from '../components/ProductList';
+import Footer from '../components/Footer';
 
 export default function Navigator() {
   return (
@@ -46,8 +48,10 @@ export default function Navigator() {
           <Route path="/admin/users" element={<PrivateRoute component={UsersGrid} adminRoute />} />
           <Route path="/admin/dashboard" element={<PrivateRoute component={Dashboard} adminRoute />} />
           <Route path="/admin/addproduct" element={<PrivateRoute component={ProductForm} adminRoute />} />
+          <Route path="/admin/products" element={<PrivateRoute component={ProductList} adminRoute />} />
         </Routes>
       </Router>
+      {/* <Footer/> */}
     </CartProvider>
   );
 }

@@ -15,7 +15,7 @@ import pd5 from './images/pd5.jpg';
 import { useCart } from './CartContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from './Footer';
+import Footer2 from './Footer2';
 
 const products = [
 { id: 9, image: p12, name: 'Handcrafted Pottery Vase', price: 85.00,rating: 4 },
@@ -91,7 +91,7 @@ const ProductList2 = () => {
       </div> */}
       <br />
       <br />
-      <Footer/>
+      <Footer2/>
     </div>
   );
 };

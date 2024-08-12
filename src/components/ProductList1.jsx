@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
-import Footer from './Footer';
+import Footer2 from './Footer2';
 import { useCart } from './CartContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -92,7 +92,7 @@ const ProductList1 = () => {
       </div> */}
       <br />
       <br />
-      <Footer />
+      <Footer2 />
     </div>
   );
 };

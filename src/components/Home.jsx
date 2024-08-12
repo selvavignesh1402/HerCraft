@@ -17,6 +17,7 @@ import fp7 from './images/fp6.jfif';
 import fpp5 from './images/fpp5.png';
 import fp6 from './images/fp6.jpg';
 import Footer from './Footer';
+import Footer2 from './Footer2';
 import Carousel from './Carousel';
 import { Link as ScrollLink } from 'react-scroll';
 import BannerSection from './BannerSection';
@@ -135,7 +136,7 @@ const Home = () => {
                 <WhyChooseUs />
                     <br/>
                     <br/>
-                <Footer/>
+                <Footer2/>
             </div>
         </div>
     );

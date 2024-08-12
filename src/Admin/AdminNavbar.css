@@ -23,7 +23,7 @@
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    border-bottom: 1px solid #888888; 
+    /* border-bottom: 1px solid #888888;  */
 }
 
 .admin-sidenav-links ul {
@@ -51,7 +51,7 @@
 .admin-top {
     background-color: #ffffff;
     width: 100%;
-    padding: 2%;
+    padding: 1.5%;
     margin-bottom: 50px;
     position: fixed;
     top: 0;
@@ -61,7 +61,22 @@
     display: flex;
     align-items: center;
     z-index: 1000; /* Ensure it stays above the sidenav */
-    border-bottom: 1px solid #888888; 
+    /* border-bottom: 1px solid #888888;  */
+}
+
+.user-profile1 {
+    display: flex;
+    align-items:center;
+    flex-direction: row-reverse;
+    margin-left: 75%;
+    gap: 25px;
+}
+
+.profile1-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 10%;
+    margin-right: 10px;
 }
 
 .top {

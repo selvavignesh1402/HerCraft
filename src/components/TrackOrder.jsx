@@ -4,6 +4,9 @@ import { useAuth } from './AuthContext';
 import './TrackOrderPage.css';
 import NavBar from './Navbar';
 import { Stepper, Step, StepLabel } from '@mui/material';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import moment from 'moment';
 
 const TrackOrderPage = () => {
   const { user } = useAuth();
@@ -17,6 +20,7 @@ const TrackOrderPage = () => {
       if (user && user.name) {
         try {
           const response = await axios.get(`http://localhost:8080/api/orders/user/${user.name}`);
+          console.log(response.data);
           setOrderDetails(response.data);
           setError('');
         } catch (err) {
@@ -44,6 +48,32 @@ const TrackOrderPage = () => {
     }
   };
 
+  const downloadInvoice = (order) => {
+    const doc = new jsPDF();
+    doc.setFontSize(12);
+    const formattedDate = moment(order.createdAt).format('DD/MM/YYYY');
+
+    doc.text('Her-Craft', 14, 20);
+    doc.text(`Invoice Number: ${order.orderId}`, 14, 30);
+    doc.text(`Date: ${formattedDate}`, 14, 40);
+    doc.text(`Customer Name: ${order.username}`, 14, 50);
+    doc.text(`Delivery Address: ${order.address}`, 14, 60);
+    doc.text(`Payment Status: ${order.paymentStatus}`, 14, 70);
+
+    const tableColumn = ['Product', 'Quantity', 'Price'];
+    const tableRows = order.items.map(item => [
+      item.productName,
+      item.quantity,
+      `₹${item.price}`,
+    ]);
+
+    doc.autoTable(tableColumn, tableRows, { startY: 80 });
+
+    doc.text(`Total Price: ₹${order.totalPrice}`, 14, doc.lastAutoTable.finalY + 10);
+
+    doc.save(`invoice_Her-Craft.pdf`);
+  };
+
   return (
     <div>
       <NavBar />
@@ -54,7 +84,7 @@ const TrackOrderPage = () => {
         {orderDetails.map((order) => (
           <div key={order.orderId} className="order-details-container">
             <div className="order-header">
-              <span className="order-date">{new Date(order.createdAt).toLocaleDateString()}</span>
+              {/* <span className="order-date">{new Date(order.createdAt).toLocaleDateString()}</span> */}
             </div>
             <div className="customer-details">
               <h2>Customer Details</h2>
@@ -79,11 +109,6 @@ const TrackOrderPage = () => {
             {order.items.map((item, index) => (
               <div key={index} className="order-item">
                 <div className="item-details">
-                  {/* <img 
-                    src={item.productImage} 
-                    alt={item.productName} 
-                    className="product-image" 
-                  /> */}
                   <div>
                     <p><strong>{item.productName}</strong></p>
                     <p>{item.variant}</p>
@@ -104,7 +129,12 @@ const TrackOrderPage = () => {
               <p><strong>Payment Status:</strong> {order.paymentStatus}</p>
             </div>
             <div className="action-buttons">
-              <button className="action-button">Download Invoice</button>
+              <button 
+                className="action-button" 
+                onClick={() => downloadInvoice(order)}
+              >
+                Download Invoice
+              </button>
               <button className="action-button">Contact Support</button>
             </div>
           </div>

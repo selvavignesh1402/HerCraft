@@ -6,7 +6,7 @@ import p1 from './images/p1.jpg';
 import p2 from './images/p2.jpg';
 import p3 from './images/p3.jpg';
 import NavBar from './Navbar';
-import Footer from './Footer';
+import Footer2 from './Footer2';
 
 const blogs = [
   {
@@ -92,7 +92,7 @@ const BlogList = () => {
     <br/>
     <br/>
     <br/>
-    <Footer/>
+    <Footer2/>
     </div>
   );
 };

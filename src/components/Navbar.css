@@ -147,3 +147,57 @@
   padding: 12px 16px;
   cursor: pointer;
 }
+
+
+.shop-menu {
+  position: relative; /* Positioning needed for the dropdown */
+}
+
+.shop-dropdown-menu {
+  display: none; /* Hide by default */
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background-color: #f5f2f2;
+  /* border: 1px solid #ddd; */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+  z-index: 1000;
+  min-width: 100px;
+}
+
+.shop-menu:hover .shop-dropdown-menu {
+  display: block; 
+}
+
+.shop-dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #000; /* Keep text color consistent */
+  text-decoration: none;
+  position: relative; /* Necessary for the underline effect */
+  padding-bottom: 5px; /* Space for the underline */
+}
+
+.shop-dropdown-menu a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px; /* Height of the underline */
+  background-color: #000; /* Color of the underline */
+  transition: width 0.8s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.shop-dropdown-menu a:hover::after {
+  width: 10%; /* Underline expands on hover */
+}
+
+.shop-dropdown-menu a:hover {
+  background-color: transparent; /* Ensure no background color change on hover */
+  border-radius: 4px; /* Optional: keep the dropdown item box shape */
+}
+
