@@ -19,6 +19,8 @@ const AdminNavbar = () => {
             <div className="admin-sidenav-header">
             <Link to="/">
           <img src={logo} alt="Logo" className="logo" />
+          Her-Craft
+        
         </Link>
             </div>
             <div className="admin-sidenav-links">

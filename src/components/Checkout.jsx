@@ -10,6 +10,7 @@ import axios from 'axios';
 import OrderConfirmation from './OrderConfirmationModal';
 import Footer2 from './Footer2';
 
+
 const CheckoutForm = () => {
   const { cart } = useCart();
   const { user, isAuthenticated } = useAuth();
@@ -383,3 +384,205 @@ const CheckoutForm = () => {
 };
 
 export default CheckoutForm;
+
+// import React, { useState, useEffect } from 'react';
+// import { loadStripe } from '@stripe/stripe-js';
+// import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+// import { useCart } from './CartContext';
+// import { useAuth } from './AuthContext';
+// import { useNavigate } from 'react-router-dom';
+// import axios from 'axios';
+// import styles from './CheckoutForm.module.css';
+// import NavBar from './Navbar';
+// import OrderConfirmation from './OrderConfirmationModal';
+// // import Footer2 from './Footer2';
+
+// // Initialize Stripe with your public key
+// const stripePromise = loadStripe('pk_test_51PiKkLCuTjSju93a0uXgPbN8gsPww8dpG8JfBHrzFffL2MZNhMQKHghfywAGwUqzQ27bMtGRPGFRlL1IpYWyvOk2002vFzzLBV');
+
+// const CheckoutForm = () => {
+//   const stripe = useStripe();
+//   const elements = useElements();
+//   const { cart } = useCart();
+//   const { user, isAuthenticated } = useAuth();
+//   const navigate = useNavigate();
+//   const [orderConfirmed, setOrderConfirmed] = useState(false);
+//   const [orderId, setOrderId] = useState(null);
+//   const [clientSecret, setClientSecret] = useState('');
+//   const [paymentMethod, setPaymentMethod] = useState('card');
+//   const [customerDetails, setCustomerDetails] = useState({
+//     username: '',
+//     firstName: '',
+//     lastName: '',
+//     companyName: '',
+//     address: '',
+//     apartment: '',
+//     city: '',
+//     zipCode: '',
+//     phone: '',
+//     notes: ''
+//   });
+
+//   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+//   useEffect(() => {
+//     // Fetch the client secret from the backend when the component mounts
+//     axios.post('http://localhost:8080/api/payment/create-payment-intent', { amount: totalPrice })
+//       .then(response => setClientSecret(response.data.clientSecret))
+//       .catch(error => console.error('Error creating PaymentIntent:', error));
+
+//     if (user && isAuthenticated) {
+//       setCustomerDetails(prevDetails => ({
+//         ...prevDetails,
+//         username: user.name
+//       }));
+//     } else {
+//       navigate('/login');
+//     }
+//   }, [user, navigate, isAuthenticated, totalPrice]);
+
+//   const handleCustomerChange = (e) => {
+//     const { name, value } = e.target;
+//     setCustomerDetails((prevDetails) => ({
+//       ...prevDetails,
+//       [name]: value,
+//     }));
+//   };
+
+//   const handlePaymentMethodChange = (e) => {
+//     setPaymentMethod(e.target.value);
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     if (!stripe || !elements) {
+//       return;
+//     }
+
+//     const cardElement = elements.getElement(CardElement);
+
+//     try {
+//       const { error, paymentMethod } = await stripe.createPaymentMethod({
+//         type: 'card',
+//         card: cardElement,
+//         billing_details: {
+//           name: customerDetails.username,
+//           email: customerDetails.username, // Assuming email is used as username
+//           address: {
+//             line1: customerDetails.address,
+//             line2: customerDetails.apartment,
+//             city: customerDetails.city,
+//             postal_code: customerDetails.zipCode,
+//           },
+//         },
+//       });
+
+//       if (error) {
+//         console.error(error);
+//         alert(error.message);
+//         return;
+//       }
+
+//       const { error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+//         payment_method: paymentMethod.id,
+//       });
+
+//       if (confirmError) {
+//         console.error(confirmError);
+//         alert(confirmError.message);
+//         return;
+//       }
+
+//       handleOrderPlacement();
+//     } catch (error) {
+//       console.error('Error processing payment:', error);
+//       alert('Payment failed. Please try again.');
+//     }
+//   };
+
+//   const handleOrderPlacement = async () => {
+//     try {
+//       const orderData = {
+//         ...customerDetails,
+//         paymentMethod,
+//         totalPrice,
+//         items: cart.map(item => ({
+//           productName: item.name,
+//           quantity: item.quantity,
+//           price: item.price,
+//         }))
+//       };
+
+//       const response = await axios.post('http://localhost:8080/api/orders/order', orderData);
+//       setOrderId(response.data.orderId);
+//       setOrderConfirmed(true);
+//       alert('Order placed successfully!');
+//     } catch (error) {
+//       console.error('Error placing order:', error);
+//       alert('Failed to place order');
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <NavBar />
+//       {orderConfirmed ? (
+//         <OrderConfirmation orderId={orderId} />
+//       ) : (
+//         <form onSubmit={handleSubmit}>
+//           <div className={styles.wrapper}>
+//             <h1 className={styles.checkoutHeader}>Checkout</h1>
+//             <div className={styles.container}>
+//               <div className={styles.leftColumn}>
+//                 {/* Customer Information and Billing Details */}
+//                 <div className={styles.customerInformation}>
+//                   <h2 className={styles.head}>Customer information</h2>
+//                   <input 
+//                     type="text" 
+//                     placeholder="Username or Email Address" 
+//                     name="username"
+//                     value={customerDetails.username}
+//                     onChange={handleCustomerChange}
+//                     required
+//                   />
+//                 </div>
+//                 {/* Payment Details */}
+//                 <div className={styles.paymentDetails}>
+//                   <h2 className={styles.head}>Payment details</h2>
+//                   <div className={styles.row}>
+//                     <label>
+//                       <input 
+//                         type="radio" 
+//                         value="card" 
+//                         checked={paymentMethod === 'card'} 
+//                         onChange={handlePaymentMethodChange} 
+//                         required
+//                       />
+//                       Credit Card
+//                     </label>
+//                   </div>
+//                   {paymentMethod === 'card' && (
+//                     <div className={styles.paymentField}>
+//                       <CardElement />
+//                     </div>
+//                   )}
+//                 </div>
+//                 <button type="submit" className={styles.placeOrderButton}>Place Order</button>
+//               </div>
+//             </div>
+//           </div>
+//         </form>
+//       )}
+//     </div>
+//   );
+// };
+
+// const CheckoutPage = () => (
+//   <Elements stripe={stripePromise}>
+//     <CheckoutForm />
+//   </Elements>
+// );
+
+// export default CheckoutPage;
+

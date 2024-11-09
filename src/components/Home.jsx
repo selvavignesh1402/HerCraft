@@ -26,7 +26,7 @@ const categories = [
     { name: 'jwellery', products: 6, imgSrc: jwellery },
     { name: 'Decor', products: 9, imgSrc: Decor },
     { name: 'fabric', products: 6, imgSrc: fabric },
-    { name: 'painting', products: 11, imgSrc: painting }
+    { name: 'bags', products: 11, imgSrc: painting }
 ];
 
 
@@ -47,15 +47,15 @@ const featuredProducts = [
         imgSrc: fp3,
     },
     {
-        name: 'Handwoven Bags',
+        name: 'Handwoven Fabric',
         type: 'Fabric',
         price: 200,
         sale: false,
         imgSrc: fp7,
     },
     {
-        name: 'Abstract Painting',
-        type: 'Painting',
+        name: 'Handwoven Bags',
+        type: 'Bags',
         price: 600,
         sale: false,
         imgSrc: fp6,

@@ -6,6 +6,7 @@ import Home from '../components/Home';
 import ProductList1 from '../components/ProductList1';
 import ProductList2 from '../components/ProductList2';
 import ProductList3 from '../components/ProductList3';
+import ProductList4 from '../components/ProductList4';
 import Profile from '../components/Profile';
 import CartPage from '../components/CartPage';
 import Checkout from '../components/Checkout';
@@ -23,6 +24,7 @@ import ProductForm from '../components/ProductForm';
 import AboutUs from '../components/AboutUs';
 import ProductList from '../components/ProductList';
 import Footer from '../components/Footer';
+import ProductDetail from '../components/ProductDetail';
 
 export default function Navigator() {
   return (
@@ -37,6 +39,8 @@ export default function Navigator() {
           <Route path="/category/jwellery" element={<ProductList1 />} />
           <Route path="/category/Decor" element={<ProductList2 />} />
           <Route path="/category/Fabric" element={<ProductList3 />} />
+          <Route path="/category/Bags" element={<ProductList4 />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/connect" element={<BlogList />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/myorder" element={<TrackOrder />} />

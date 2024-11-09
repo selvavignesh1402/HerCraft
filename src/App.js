@@ -13,18 +13,19 @@ import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
 import OtpVerification from './components/OTPVerification';
 import Footer2 from './components/Footer2';
+import ProductDetail from './components/ProductDetail';
+import { ProductProvider } from './components/ProductContext';
 
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
+      <ProductProvider>
           <Navigator />
+      </ProductProvider>
       </AuthProvider>
-      {/* <Footer2/> */}
-      {/* <ProductForm/>
-      <ProductList/> */}
-      {/* <OtpVerification/> */}
+      
       
     </div>
   );
