@@ -1,0 +1,266 @@
+/* Main layout */
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* background-color: #f8fafc; */
+  min-height: 100vh;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+  margin-left: 130px;
+}
+
+/* Card styling */
+.card {
+  background-color: white;
+  /* border-radius: 1rem; */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Typography */
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+/* Form elements */
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  width: 95%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  background-color: white;
+}
+
+.textarea {
+  composes: input;
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.select {
+  composes: input;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* Upload zone */
+.dropZone {
+  border: 2px dashed #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 2.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.dropZone:hover {
+  border-color: #3b82f6;
+  background-color: #f0f9ff;
+}
+
+.uploadIcon {
+  width: 3rem;
+  height: 3rem;
+  color: #64748b;
+  margin: 0 auto 1rem;
+  transition: color 0.2s ease;
+}
+
+.dropZone:hover .uploadIcon {
+  color: #3b82f6;
+}
+
+.uploadText {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.primaryButton {
+  composes: button;
+  background-color: #3b82f6;
+  color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+              0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.primaryButton:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.secondaryButton {
+  composes: button;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+}
+
+.secondaryButton:hover {
+  background-color: #f8fafc;
+  color: #1e293b;
+  border-color: #cbd5e1;
+}
+
+/* Required field indicator */
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .dropZone {
+    padding: 2rem;
+  }
+}
+
+/* Additional animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.formGroup {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Add these new styles to your existing CSS file */
+
+.dragOver {
+  border-color: #3b82f6 !important;
+  background-color: #f0f9ff !important;
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+
+.preview {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.dropZone {
+  position: relative;
+  border: 2px dashed #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 2.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropZone:hover {
+  border-color: #3b82f6;
+  background-color: #f0f9ff;
+}
+
+.uploadIcon {
+  width: 3rem;
+  height: 3rem;
+  color: #64748b;
+  margin: 0 auto 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.dropZone:hover .uploadIcon {
+  color: #3b82f6;
+}
+
+.uploadText {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.previewImage {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.rightside{
+  width: 350px;
+}

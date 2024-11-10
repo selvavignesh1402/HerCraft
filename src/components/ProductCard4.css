@@ -2,10 +2,10 @@ body {
     font-family: Arial, sans-serif;
   }
   
-  .contact2-header {
-    background: url('./images/p2.jpg')  center center fixed;
+  .contact4-header {
+    background: url('./images/handmadebg.jpg')  center center fixed;
     background-size: cover;
-    height: 64vh;
+    height: 65vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,20 +13,20 @@ body {
     width: 210vh;
     margin-top: 90px;
   }
-
-  .contact2-header h1 {
+  
+  .contact4-header h1 {
     font-size: 4em;
     margin: 0;
     color: #ffffff;
   }
   
-  .contact2-header p {
+  .contact4-header p {
     font-size: 1.2em;
     margin: 20px 0 0 0;
     color: #ffffff;
   }
   
-  /* .sidebar {
+  .sidebar {
     position: absolute;
     top: 600px;
     left: 0;
@@ -65,7 +65,7 @@ body {
   .sidebar ul li:hover {
     text-decoration: underline;
   }
-   */
+  
   .grid {
     display: flex;
     flex-wrap: wrap;

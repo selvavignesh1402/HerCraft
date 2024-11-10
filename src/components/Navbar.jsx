@@ -96,7 +96,7 @@ const NavBar = ({ onSearch }) => {
                 <Link to="/category/jwellery" onClick={() => setShopDropdownVisible(false)}>Jwellery</Link>
                 <Link to="/category/Decor" onClick={() => setShopDropdownVisible(false)}>Decor</Link>
                 <Link to="/category/Fabric" onClick={() => setShopDropdownVisible(false)}>Fabric</Link>
-                <Link to="" onClick={() => setShopDropdownVisible(false)}>Rings</Link>
+                <Link to="/category/Bags" onClick={() => setShopDropdownVisible(false)}>Bags</Link>
               </div>
             )}
           </li>

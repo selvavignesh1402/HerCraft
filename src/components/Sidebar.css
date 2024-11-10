@@ -1,86 +1,259 @@
-.sidebar {
-    width: 250px;
-    padding: 20px;
-    background: linear-gradient(180deg, #f7f7f7, #e0e0e0);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-    height: 50%;
+/* Sidebar.css */
+.sidebar-container {
+  background: white;
+  padding: 1.5rem;
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.filter-header {
+  margin-bottom: 1.5rem;
+}
+
+.filter-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  color: #4f46e5;
+}
+
+/* Search Section */
+.search-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 280px;
+  top: 45%;
+  transform: translateY(-60%);
+  color: #6b7280;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  background: #f9fafb;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  background: white;
+}
+
+/* Section Styles */
+.filter-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Price Range Styles */
+.price-range-container {
+  padding: 0.5rem;
+}
+
+.range-slider-container {
+  position: relative;
+  left: -150px;
+  height: 15px;
+  margin-bottom: 1rem;
+}
+
+.range-slider {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #e5e7eb;
+  -webkit-appearance: none;
+  pointer-events: none;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #4f46e5;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.2s;
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.price-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  margin-top: 1rem;
+}
+
+.price-badge {
+  background: #f3f4f6;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.price-separator {
+  color: #6b7280;
+}
+
+/* Sort Buttons */
+.sort-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+}
+
+.sort-buttons.expanded {
+  max-height: 200px;
+}
+
+.sort-button {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: white;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.sort-button:hover {
+  background: #f9fafb;
+  border-color: #4f46e5;
+  /* transform: translateX(4px); */
+}
+
+/* Categories Grid */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.5rem;
+}
+
+.category-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s;
+}
+
+.category-button:hover {
+  border-color: #4f46e5;
+  background: #f9fafb;
+}
+
+.category-button.active {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: white;
+}
+
+.category-count {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.category-button.active .category-count {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Update these styles in your Sidebar.css */
+
+.layout-container {
+  display: flex;
+  gap: 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  background-color: #f9fafb;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
   }
-  
-  .sidebar h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #333;
-    font-weight: bold;
-    border-bottom: 1px solid #3f72af;
-    padding-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
+    padding: 1rem;
   }
-  
-  .sidebar input[type="text"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
-    font-family: inherit; /* Added font style */
-  }
-  
-  .sidebar input[type="text"]:focus {
-    border-color: #3f72af;
-    outline: none;
-  }
-  
-  .sidebar input[type="range"] {
+
+  .sidebar-container {
     width: 100%;
-    margin: 10px 0;
   }
-  
-  .sidebar p {
-    font-size: 18px;
-    margin: 10px 0;
-    color: #666;
+
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
   }
-  
-  .sidebar button {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: none;
-    background-color: #3f72af;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  .sidebar button:hover {
-    background-color: #2c5a8a;
-    transform: scale(1.02);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar ul li {
-    padding: 12px 0;
-    cursor: pointer;
-    font-size: 18px;
-    color: #555;
-    border-bottom: 1px solid #ddd;
-    transition: color 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .sidebar ul li:hover {
-    color: #fff;
-    background-color: #3f72af;
-  }
-  
+}
+
+.filter-section {
+  animation: slideDown 0.3s ease-out;
+}

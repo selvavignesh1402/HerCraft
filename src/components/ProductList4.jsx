@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import Footer2 from './Footer2';
 import { useCart } from './CartContext';
 import { ToastContainer, toast } from 'react-toastify';
+import './ProductCard4.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProductList4 = () => {
@@ -54,16 +55,17 @@ const ProductList4 = () => {
   return (
     <div>
       <Navbar onSearch={handleSearch} />
-      <div className="contact1-header">
-        <h1>Hand-Made Jewelry</h1>
+      <div className="contact4-header">
+        <h1>Hand-Crafted Bags</h1>
         <p>
-          Discover our beautiful handmade jewelry collection. Each piece is
+          Discover our beautiful Handmade Bags collection. Each piece is
           crafted with love and precision, showcasing unique designs and
           high-quality materials.
         </p>
       </div>
+      <div className="layout-container">
       <Sidebar onSearch={handleSearch} onFilter={handleFilter} />
-      <div className="grid">
+      <div className="products-grid">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <ProductCardBackend
@@ -76,6 +78,7 @@ const ProductList4 = () => {
         ) : (
           <p>No products found</p>
         )}
+      </div>
       </div>
       <ToastContainer toastClassName="toast-success" />
       <Footer2 />

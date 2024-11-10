@@ -65,8 +65,9 @@ const ProductList2 = () => {
         <h1>Pottery</h1>
         <p>Each piece is skillfully handcrafted, reflecting timeless techniques and creativity.</p>
         </div>
+        <div className="layout-container">
       <Sidebar onSearch={handleSearch} onFilter={handleFilter} />
-      <div className="grid">
+      <div className="products-grid">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} handleAddToCart={handleAddToCart} />
@@ -74,6 +75,7 @@ const ProductList2 = () => {
         ) : (
           <p>No products found</p>
         )}
+      </div>
       </div>
       <ToastContainer />
       <br />

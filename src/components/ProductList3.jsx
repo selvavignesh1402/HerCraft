@@ -62,15 +62,18 @@ const ProductList3 = () => {
         <h1>Hand-Made Textiles</h1>
         <p>   Immerse yourself in the world of handmade textiles. Each piece is a testament to the skill and creativity of our artisans, crafted with care and precision.</p>
         </div>
+        <div className="layout-container">
       <Sidebar onSearch={handleSearch} onFilter={handleFilter} />
-      <div className="grid">
+      <div className="products-grid">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} handleAddToCart={handleAddToCart} />
+            
           ))
         ) : (
           <p>No products found</p>
         )}
+      </div>
       </div>
       <ToastContainer />
       <br />

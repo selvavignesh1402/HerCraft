@@ -28,10 +28,15 @@ const CartPage = () => {
               {cart.map((item) => (
                 <div key={item.id} className="cart-item">
                   <div className="product">
-                    <button className="remove-button" onClick={() => removeFromCart(item.id)}>×</button>
-                    <img src={item.image} alt={item.name} />
-                    <span>{item.name}</span>
-                  </div>
+  <button className="remove-button" onClick={() => removeFromCart(item.id)}>×</button>
+  {item.image.startsWith('data:image/jpeg;base64,') ? (
+    <img src={item.image} alt={item.name} />
+  ) : (
+    <img src={item.image} alt={item.name} />
+  )}
+  <span>{item.name}</span>
+</div>
+
                   <div className="price">₹{item.price.toFixed(2)}</div>
                   <div className="quantity">
                     <input

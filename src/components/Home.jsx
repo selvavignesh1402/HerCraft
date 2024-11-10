@@ -6,9 +6,13 @@ import Featuredproducts from './FeaturedProducts';
 import WhyChooseUs from './WhyChooseUs';
 import hbg3 from './images/hbg3.jpg';
 import jwellery from './images/jewelry-icon.png';
+import jwellery2 from './images/accessory.png';
 import Decor from './images/pottery-icon.png';
 import fabric from './images/fabric-icon.png';
+import fabric2 from './images/organic.png';
 import painting from './images/paintings-icon.png';
+import vase from './images/vase.png';
+import bag from './images/bag-icon.png';
 import fp1 from './images/slider-1.png';
 import fp2 from './images/fp2.png';
 import fp3 from './images/fp3.png';
@@ -23,10 +27,10 @@ import { Link as ScrollLink } from 'react-scroll';
 import BannerSection from './BannerSection';
 
 const categories = [
-    { name: 'jwellery', products: 6, imgSrc: jwellery },
-    { name: 'Decor', products: 9, imgSrc: Decor },
-    { name: 'fabric', products: 6, imgSrc: fabric },
-    { name: 'bags', products: 11, imgSrc: painting }
+    { name: 'Jwellery', products: 6, imgSrc: jwellery2 },
+    { name: 'Decor', products: 9, imgSrc: vase },
+    { name: 'Fabric', products: 6, imgSrc: fabric2 },
+    { name: 'Bags', products: 11, imgSrc: bag }
 ];
 
 

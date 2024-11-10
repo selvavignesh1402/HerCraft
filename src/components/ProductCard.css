@@ -10,7 +10,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 205vh;
+  width: 210vh;
   margin-top: 90px;
 }
 
@@ -231,3 +231,10 @@ body {
     color: #f5c518;
   }
   
+  .products-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Changed to always show 3 columns */
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }

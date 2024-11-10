@@ -65,8 +65,9 @@ const ProductList1 = () => {
         <h1>Hand-Made Jwellery</h1>
         <p> Discover our beautiful handmade jewelry collection. Each piece is crafted with love and precision, showcasing unique designs and high-quality materials.</p>
         </div>
+        <div className="layout-container">
       <Sidebar onSearch={handleSearch} onFilter={handleFilter} />
-      <div className="grid">
+      <div className="products-grid">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} handleAddToCart={handleAddToCart} />
@@ -75,6 +76,7 @@ const ProductList1 = () => {
         ) : (
           <p>No products found</p>
         )}
+      </div>
       </div>
       <ToastContainer toastClassName="toast-success" />
       <br />
