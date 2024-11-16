@@ -23,7 +23,7 @@ const Dashboard = () => {
         <NavBar/>
   
     <div className="dashboard">
-      {/* Header */}
+      
       <div className="header">
         <div className="user-info">
           <img src={profile} alt="avatar" className="avatar" />
@@ -38,7 +38,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Stats Cards */}
+      
       <div className="stats-grid">
         <div className="stat-card">
           <div className="stat-icon orders">
@@ -78,7 +78,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Navigation */}
+    
       <div className="nav-tabs">
         {['Profile', 'Orders', 'Wishlist', 'Settings'].map((tab) => (
           <button
@@ -95,7 +95,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      {/* Profile Content */}
+  
       {activeTab === 'profile' && (
         <div className="content-section-profile">
           <h2>Profile Information</h2>

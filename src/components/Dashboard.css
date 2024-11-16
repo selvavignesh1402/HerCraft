@@ -1,71 +1,232 @@
-.dashboard {
-  padding-top: 100px;
-  /* background-color: #ffffff;
-  color: rgb(0, 0, 0); */
+/* Main Layout */
+.dashboard-container {
+  padding: 1.5rem;
+  background-color: rgb(249 250 251);
+  min-height: 100vh;
+  margin-top: 50px;
+  width: 118%;
 }
 
-.summary-cards {
-  display: flex;
-  justify-content:space-around;
-  margin-bottom: 50px;
-  padding-left: 220px;
-  gap: 50px;
+/* Grid Layouts */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* Card Styles */
 .dcard {
-  /* background-color: #ffffff; */
-  border-radius: 8px;
-  padding: 20px;
-  width: 40%;
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  width: 72%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.dcard-header {
   display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
   justify-content: space-between;
-  margin-left: 121px;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-.dcard-content {
+.dcard-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+/* Stats Card */
+.stat-card {
   display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-icon {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+}
+
+.stat-icon.green {
+  background-color: rgb(220 252 231);
+}
+
+.stat-icon.blue {
+  background-color: rgb(219 234 254);
+}
+
+.stat-icon.red {
+  background-color: rgb(254 226 226);
+}
+
+.stat-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.stat-icon.green svg {
+  color: rgb(34 197 94);
+}
+
+.stat-icon.blue svg {
+  color: rgb(59 130 246);
+}
+
+.stat-icon.red svg {
+  color: rgb(239 68 68);
+}
+
+.stat-content h3 {
+  color: rgb(107 114 128);
+  font-size: 0.875rem;
+}
+
+.stat-content p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.stat-content span {
+  font-size: 0.875rem;
+}
+
+.stat-content span.green {
+  color: rgb(34 197 94);
+}
+
+.stat-content span.blue {
+  color: rgb(59 130 246);
+}
+
+.stat-content span.red {
+  color: rgb(239 68 68);
+}
+
+/* Chart Legend */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+}
+
+.legend-label {
+  font-size: 0.875rem;
+  color: rgb(75 85 99);
+}
+
+/* Customer List */
+.customer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.customer-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.charts{
+.customer-info {
   display: flex;
-  /* flex-direction: row; */
-  justify-content: space-between;
-}
-.icon {
-  font-size: 40px;
-  margin-right: 10px;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.new-orders {
-  border-left: 5px solid #4CAF50;
-  background-color: rgb(238, 238, 238);
+.customer-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: rgb(229 231 235);
 }
 
-.on-hold {
-  border-left: 5px solid #FFC107;
-  background-color: rgb(238, 238, 238);
+.customer-details h4 {
+  font-weight: 500;
 }
 
-.out-of-stock {
-  border-left: 5px solid #F44336;
-  background-color: rgb(238, 238, 238);
+.customer-details p {
+  font-size: 0.875rem;
+  color: rgb(107 114 128);
 }
 
-.chart-container {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
+/* Chart Colors */
+.visitors-chart-colors {
+  --color-1: #f97316;
+  --color-2: #22c55e;
+  --color-3: #0ea5e9;
+  --color-4: #ef4444;
 }
 
-.dhead{
-  padding-right: 50%;
-  font-size: 28px;
-  color: #3f72af;
-  margin-bottom: 50px;
-  /* text-align: left; */
-  /* padding-left: 180px; */
-  font-weight: bold;
+.buyers-chart-colors {
+  --color-1: #f97316;
+  --color-2: #22c55e;
+  --color-3: #ef4444;
+}
+
+/* Revenue Chart Specific */
+.revenue-chart {
+  width: 100%;
+  height: 300px;
+}
+
+.revenue-chart .google-line {
+  stroke: #22c55e;
+  stroke-width: 2;
+}
+
+.revenue-chart .facebook-line {
+  stroke: #f97316;
+  stroke-width: 2;
+}
+
+/* Pie Charts */
+.pie-chart-container {
+  width: 100%;
+  height: 300px;
+}
+
+/* Responsive Container */
+.responsive-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Utility Classes */
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
 }

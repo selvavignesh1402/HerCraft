@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './OrdersGrid.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faTruck,CiStopwatch,faCog,faCheckCircle, faTimesCircle, faDollarSign, faCreditCard, faCheck, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faTruck, faCog, faCheckCircle, faTimesCircle, faCheck, faExclamationCircle, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import AdminNavbar from '../Admin/AdminNavbar';
 
 const statuses = ['waiting', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
@@ -29,10 +29,10 @@ const paymentStatusIcons = {
   Refunded: faCreditCard
 };
 const paymentStatusColors = {
-  pending: '#FFA500', // Orange
-  completed: '#32CD32', // LimeGreen
-  Failed: '#FF4500', // OrangeRed
-  Refunded: '#1E90FF' // DodgerBlue
+  pending: '#FFA500', 
+  completed: '#32CD32', 
+  Failed: '#FF4500', 
+  Refunded: '#1E90FF'
 };
 
 const getRandomId = () => Math.random().toString(36).substr(2, 9);
@@ -96,8 +96,19 @@ const OrdersGrid = () => {
     }
   };
   
-  const handleDeleteRow = (id) => {
-    setRows(rows.filter((row) => row.id !== id));
+  const handleDeleteRow = async (id) => {
+    const rowToDelete = rows.find(row => row.id === id);
+    const numericId = Number(rowToDelete.id);
+    try {
+      await axios.delete(`http://localhost:8080/api/orders/delete/${numericId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      setRows(rows.filter((row) => row.id !== id));
+    } catch (error) {
+      console.error('Error deleting order:', error);
+    }
   };
 
   const handleRowChange = (e, id) => {
@@ -128,59 +139,16 @@ const OrdersGrid = () => {
               <tr key={row.id}>
                 {editingRowId === row.id ? (
                   <>
-                    <td>
-                      <input
-                        type="text"
-                        name="orderId"
-                        value={row.orderId}
-                        readOnly
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="customerName"
-                        value={row.customerName}
-                        readOnly
-                        required
-                      />
-                    </td>
-                    <td>
-                      {row.orderedItems.map((item, index) => (
-                        <div key={index} className="ordered-item-inputs">
-                          <input
-                            type="text"
-                            name={`productName-${index}`}
-                            value={item.productName}
-                            readOnly
-                            required
-                          />
-                          <input
-                            type="number"
-                            name={`quantity-${index}`}
-                            value={item.quantity}
-                            readOnly
-                            required
-                          />
-                          <input
-                            type="number"
-                            name={`price-${index}`}
-                            value={item.price}
-                            readOnly
-                            required
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="totalPrice"
-                        value={row.totalPrice}
-                        readOnly
-                        required
-                      />
-                    </td>
+                    <td><input type="text" name="orderId" value={row.orderId} readOnly /></td>
+                    <td><input type="text" name="customerName" value={row.customerName} readOnly required /></td>
+                    <td>{row.orderedItems.map((item, index) => (
+                      <div key={index} className="ordered-item-inputs">
+                        <input type="text" name={`productName-${index}`} value={item.productName} readOnly required />
+                        <input type="number" name={`quantity-${index}`} value={item.quantity} readOnly required />
+                        <input type="number" name={`price-${index}`} value={item.price} readOnly required />
+                      </div>
+                    ))}</td>
+                    <td><input type="text" name="totalPrice" value={row.totalPrice} readOnly required /></td>
                     <td>
                       <select name="status" value={row.status} onChange={(e) => handleRowChange(e, row.id)}>
                         {statuses.map((status) => (
@@ -191,32 +159,20 @@ const OrdersGrid = () => {
                     <td style={{ color: paymentStatusColors[row.paymentStatus] }}>
                       <FontAwesomeIcon icon={paymentStatusIcons[row.paymentStatus]} /> {row.paymentStatus}
                     </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="address"
-                        value={row.address}
-                        readOnly
-                        required
-                      />
-                    </td>
-                    <td>
-                      <button className="save-btn" onClick={() => handleSaveRow(row.id)}>Save</button>
-                    </td>
+                    <td><input type="text" name="address" value={row.address} readOnly required /></td>
+                    <td><button className="save-btn" onClick={() => handleSaveRow(row.id)}>Save</button></td>
                   </>
                 ) : (
                   <>
                     <td>{row.orderId}</td>
                     <td>{row.customerName}</td>
-                    <td>
-                      {row.orderedItems.map((item, index) => (
-                        <div key={index} className="ordered-item-details">
-                          <p>{item.productName}</p>
-                          <p>Qty: {item.quantity}</p>
-                          <p>Price: ₹{item.price.toFixed(2)}</p>
-                        </div>
-                      ))}
-                    </td>
+                    <td>{row.orderedItems.map((item, index) => (
+                      <div key={index} className="ordered-item-details">
+                        <p>{item.productName}</p>
+                        <p>Qty: {item.quantity}</p>
+                        <p>Price: ₹{item.price.toFixed(2)}</p>
+                      </div>
+                    ))}</td>
                     <td>₹{row.totalPrice}</td>
                     <td style={{ color: statusColors[row.status] }}>
                       <FontAwesomeIcon icon={statusIcons[row.status]} /> {row.status}

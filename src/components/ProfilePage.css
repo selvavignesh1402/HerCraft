@@ -4,12 +4,11 @@
     padding: 24px;
     background: #f6f6f8;
     min-height: 100vh;
-    margin-top: 10px;
+    margin-top: 50px;
   }
   
   .header {
     background: white;
-    /* margin-top: -75px; */
     border-radius: 12px;
     padding: 16px 24px;
     display: flex;
