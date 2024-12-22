@@ -8,7 +8,7 @@ import Footer2 from './Footer2';
 function AboutUs() {
     return (
       <div>
-
+<h2>Hello!</h2>
       
       <div>
 
